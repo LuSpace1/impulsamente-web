@@ -1,0 +1,114 @@
+# ========================
+# Python / Django (Backend)
+# ========================
+
+# Entorno virtual
+venv/
+env/
+ENV/
+.venv
+
+# Base de datos local
+*.sqlite3
+db.sqlite3
+
+# Archivos de Python compilados
+*.py[cod]
+*$py.class
+__pycache__/
+*.so
+
+# Configuraciones locales
+local_settings.py
+.env
+.env.local
+
+# Archivos de migración (opcional - descomentar si no quieres subirlas)
+# */migrations/*.py
+# !*/migrations/__init__.py
+
+# Media files (archivos subidos por usuarios)
+media/
+
+# Static files recolectados
+staticfiles/
+static_root/
+
+# ========================
+# Node.js / React (Frontend)
+# ========================
+
+# Dependencias
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build de producción
+build/
+dist/
+.next/
+out/
+
+# Variables de entorno
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Caché
+.cache/
+.parcel-cache/
+
+# ========================
+# IDEs y Editores
+# ========================
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ========================
+# Sistema Operativo
+# ========================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# ========================
+# Otros
+# ========================
+
+# Logs
+*.log
+logs/
+
+# Cobertura de tests
+coverage/
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Archivos temporales
+*.tmp
+*.temp
+*.swp
+*.swo
