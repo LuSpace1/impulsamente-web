@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -132,3 +133,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# --- Configuración de Archivos Media ---
+# URL base para acceder a los archivos subidos desde el navegador
+MEDIA_URL = '/media/'
+
+# Ruta en el disco duro donde se guardarán los archivos subidos
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
