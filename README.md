@@ -90,12 +90,12 @@ python manage.py runserver
 ```bash
 cd frontend
 npm install
-npm start
+npm run dev
 ```
 
 ### Accesos Locales
 
-- **Frontend:** http://localhost:3000
+- **Frontend:** http://localhost:5173
 - **Backend API:** http://localhost:8000
 - **Django Admin:** http://localhost:8000/admin
 
