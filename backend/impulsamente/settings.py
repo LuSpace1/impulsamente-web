@@ -59,8 +59,8 @@ ROOT_URLCONF = 'impulsamente.urls'
 # Define los orígenes (dominios) autorizados para hacer peticiones a la API de Django.
 # En desarrollo, React suele correr en localhost o 127.0.0.1, por eso se incluyen ambos.
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",   # Frontend React (modo desarrollo)
-    "http://127.0.0.1:3000",   # Alternativa local (algunos navegadores usan esta IP)
+    "http://localhost:5173",   # Frontend React vite (modo desarrollo)
+    "http://127.0.0.1:5173",   # Alternativa local (algunos navegadores usan esta IP)
 ]
 
 TEMPLATES = [
