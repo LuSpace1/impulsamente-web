@@ -15,6 +15,9 @@ function Home() {
         <div>
           <Link to={"/AgendarPsicologo"}>Agendar Psicologo</Link>
         </div>
+        <div>
+          <Link to={"/TestApi"}>Testeo de la api</Link>
+        </div>
       </div>
     );
 }

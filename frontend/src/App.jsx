@@ -5,6 +5,7 @@ import AgendarIntegral from './pages/AgendarIntegral'
 import AgendarMetodologo from './pages/AgendarMetodologo'
 import AgendarPsicologo from './pages/AgendarPsicologo'
 import Home from "./pages/Home";
+import TestApi from './components/TestApi'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/AgendarIntegral" element={<AgendarIntegral />} />
         <Route path="/AgendarMetodologo" element={<AgendarMetodologo />} />
         <Route path="/AgendarPsicologo" element={<AgendarPsicologo />} />
+        <Route path="/TestApi" element={<TestApi/>}/>
       </Routes>
       {/* Footer podria ir aqui */}
     </>
