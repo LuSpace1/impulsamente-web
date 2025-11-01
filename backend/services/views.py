@@ -2,7 +2,7 @@ from rest_framework.generics import ListAPIView #Importamos la clase base de la 
 from .models import Professional 
 from .serializers import ProfessionalSerializer #Importamos serializer para convertir los objetos en JSON.
 
-class PsychologyProffesionalsView(ListAPIView):
+class PsychologyProfesionalsView(ListAPIView):
     """ 
     Vista que devuelve la lista de profesionales de psicología activos.
     Endpoint: GET /api/professionals/psychology/
