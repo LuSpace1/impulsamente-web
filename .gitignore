@@ -38,6 +38,10 @@ static_root/
 # Node.js / React (Frontend)
 # ========================
 
+# Vite cache
+.vite/
+frontend/.vite/
+
 # Dependencias
 node_modules/
 npm-debug.log*
