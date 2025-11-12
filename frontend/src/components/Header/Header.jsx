@@ -2,6 +2,7 @@
 import { Button, Navbar, Nav, Container } from "react-bootstrap";
 import { Link as RouterLink, useNavigate } from "react-router-dom"; // Importa useNavigate
 import { Link as ScrollLink, animateScroll } from "react-scroll"; // Importa animateScroll
+import "./Header.css";
 
 function Header() {
 
@@ -19,10 +20,14 @@ function Header() {
   };
 
   return (
-    <Navbar sticky="top" expand="lg" className="bg-body-tertiary">
+    <Navbar sticky="top" expand="lg" className="navbar-personalizado">
       <Container>
-        <Navbar.Brand onClick={handleInicioClick} style={{ cursor: "pointer" }}>
-          Impulsamente
+        <Navbar.Brand
+          onClick={handleInicioClick}
+          className="logo-brand"
+          style={{ cursor: "pointer" }}
+        >
+          Impulsa<span>Mente</span>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -56,22 +61,29 @@ function Header() {
 
             <Nav.Link
               as={ScrollLink}
-              to="seccion-contacto"
+              to="seccion-FAQ"
               spy={true}
               smooth={true}
               offset={-70}
               duration={500}
               style={{ cursor: "pointer" }}
             >
-              contacto
+              FAQ
             </Nav.Link>
 
-            <Button
-              variant="primary"
-              as={RouterLink}
-              to="/agendar"
-              className="ms-lg-2"
+            <Nav.Link
+              as={ScrollLink}
+              to="seccion-contactanos"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+              style={{ cursor: "pointer" }}
             >
+              contactanos
+            </Nav.Link>
+
+            <Button as={RouterLink} to="/agendar" className="btn-agendar">
               Agendar
             </Button>
           </Nav>

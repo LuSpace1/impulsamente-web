@@ -5,7 +5,6 @@ import { Element } from 'react-scroll';
 function Home() {
     return (
       <div>
-
         <Hero />
 
         <Element name="seccion-servicios">
@@ -33,8 +32,20 @@ function Home() {
             <h2>AQUÍ VA LA SECCIÓN DE NOSOTROS</h2>
           </div>
         </Element>
+        <Element name="seccion-FAQ">
+          {/* aqui va el componente de preguntas frecuentes*/}
+          <div
+            style={{
+              height: "100vh",
+              background: "lightgrey",
+              paddingTop: "70px",
+            }}
+          >
+            <h2>AQUÍ VA LA SECCIÓN DE FAQ</h2>
+          </div>
+        </Element>
 
-        <Element name="seccion-contacto">
+        <Element name="seccion-contactanos">
           {/* aqui va el componente de contacto*/}
           <div
             style={{
