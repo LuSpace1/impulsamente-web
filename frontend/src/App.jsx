@@ -6,12 +6,15 @@ import AgendarMetodologo from './pages/AgendarMetodologo'
 import AgendarPsicologo from './pages/AgendarPsicologo'
 import Home from "./pages/Home";
 import TestApi from './components/TestApi'
+import Header from './components/Header/Header'
+import Hero from './components/Hero/Hero'
 
 function App() {
 
   return (
     <>
-      {/* navBar del header podria ir aqui */}
+      <Header/>
+      <Hero/>
       <Routes> {/* observa y compara la url actual con las almacenadas*/}
         <Route path="/" element={<Home/>} /> {/* indica que debe renderizar [element] si coinciden */}
         <Route path="/AgendarIntegral" element={<AgendarIntegral />} />
