@@ -1,0 +1,112 @@
+
+/*  mantendra el color aunque tenga el mouse encima*/
+.logo-brand:hover,
+.logo-brand:focus {
+  color: transparent;
+}
+
+.logo-brand {
+  font-size: 1.75rem; 
+  font-weight: 500;  
+  
+  /* Define el fondo como un gradiente */
+  background: linear-gradient(
+    to right, 
+    #F89880, /* Rosa/Coral */
+    #B5A8C8, /* Morado/Gris */
+    #88C0D0, /* Azul claro */
+    #8FBC8F  /* Verde claro */
+  );
+  
+  -webkit-background-clip: text; 
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0px 0px 1.5px rgba(181, 168, 200, 0.4); 
+}
+
+/*  Estilo para la parte "Mente"
+   ========================================================= */
+.logo-brand span {
+  /* que "Mente" sea más grueso (bold) */
+  font-weight: 700;
+}
+/*  Estilo del Navbar principal
+   ========================================================= */
+.navbar-personalizado {
+  /* Fondo blanco limpio (no transparente) */
+  background-color: #FFFFFF;
+  
+  /* Sombra sutil */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  
+  /* Un poco más de 'aire' (espacio vertical) */
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  
+  transition: background-color 0.3s ease-in-out;
+}
+
+/*  Estilo de los links de navegación (.nav-link)
+   ========================================================= */
+.navbar-personalizado .nav-link {
+  /* Color de texto oscuro*/
+  color: #333; 
+  font-weight: 500; /* Un grosor de fuente seminegrita */
+  
+  /* Espaciado entre los links */
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+  
+  /* Transición suave para el hover */
+  transition: color 0.2s ease-in-out;
+}
+
+/*  Estilo del link ACTIVO o al pasar el mouse (hover)
+   ========================================================= */
+/* Esto funciona con 'spy={true}' de react-scroll. */
+.navbar-personalizado .nav-link.active,
+.navbar-personalizado .nav-link:hover {
+  color: #000000; /* Color negro fuerte */
+  font-weight: 700; /* Más grueso cuando está activo */
+}
+
+/* Estilo del botón "Agendar" 
+   ========================================================= */
+.btn-agendar {
+  background-color: #f4c7c7; 
+  
+  /* Borde del mismo color */
+  border-color: #f4c7c7; 
+  
+  /* Color de texto blanco */
+  color: #FFFFFF; 
+  
+  /* Bordes súper redondeados  */
+  border-radius: 50em; 
+  
+  /* Espaciado interno */
+  padding: 0.6rem 1.5rem; 
+  
+  font-weight: 600;
+  
+  /* Transición suave para todos los efectos */
+  transition: all 0.3s ease;
+  
+  /* Asegura que el texto este centrado */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 5. Efecto Hover para el botón "Agendar"
+   ========================================================= */
+.btn-agendar:hover {
+  /* Un poco más oscuro al pasar el mouse */
+  background-color: #E68A73; 
+  border-color: #E68A73;
+  color: #FFFFFF; 
+  
+  /* Efecto sutil de "salto" y sombra */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
