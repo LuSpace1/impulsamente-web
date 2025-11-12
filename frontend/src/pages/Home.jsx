@@ -1,25 +1,53 @@
 import { Link } from "react-router-dom";
-//PlaceHolder de home
+import Hero from "../components/Hero/Hero";
+import { Element } from 'react-scroll'; 
+
 function Home() {
     return (
       <div>
-        <h1>PlaceHolder de Home</h1>
-        <p> Asi es soy un placeholder gente miren: Lore ipsum etc.</p>
-        <p>No entienden la fokin vibra</p>
-        <div>
-          <Link to={"/AgendarIntegral"}>Agendar Plan Integral</Link>
-        </div>
-        <div>
-          <Link to={"/AgendarMetodologo"}>Agendar Metodologo</Link>
-        </div>
-        <div>
-          <Link to={"/AgendarPsicologo"}>Agendar Psicologo</Link>
-        </div>
-        <div>
-          <Link to={"/TestApi"}>Testeo de la api</Link>
-        </div>
+
+        <Hero />
+
+        <Element name="seccion-servicios">
+          {/* aqui va el componente de servicios */}
+          <div
+            style={{
+              height: "100vh",
+              background: "lightgrey",
+              paddingTop: "70px",
+            }}
+          >
+            <h2>AQUÍ VA LA SECCIÓN DE SERVICIOS</h2>
+          </div>
+        </Element>
+
+        <Element name="seccion-nosotros">
+          {/* aqui va el componente de nosotros */}
+          <div
+            style={{
+              height: "100vh",
+              background: "lightblue",
+              paddingTop: "70px",
+            }}
+          >
+            <h2>AQUÍ VA LA SECCIÓN DE NOSOTROS</h2>
+          </div>
+        </Element>
+
+        <Element name="seccion-contacto">
+          {/* aqui va el componente de contacto*/}
+          <div
+            style={{
+              height: "100vh",
+              background: "lightgreen",
+              paddingTop: "70px",
+            }}
+          >
+            <h2>AQUÍ VA LA SECCIÓN DE CONTACTO</h2>
+          </div>
+        </Element>
       </div>
     );
 }
 
-export default Home; // Exportarla para que app.jsx la pueda ver
+export default Home; 
