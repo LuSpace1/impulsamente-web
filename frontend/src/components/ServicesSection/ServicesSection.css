@@ -1,0 +1,43 @@
+/* --- ServicesSection.css --- */
+/* (Controla el encabezado de la sección) */
+
+.services-section {
+    padding: 6rem 0;
+}
+
+.services-header {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 4rem auto;
+}
+
+.services-pre-title {
+    font-size: 1.75rem;
+    /* El 'font-weight' ahora lo controla la clase 'fw-semibold' 
+       de Bootstrap en el archivo JSX, lo cual es más robusto. */
+    margin-bottom: 0.75rem;
+    background: linear-gradient(to right,
+            #F89880,
+
+            #B5A8C8,
+            #88C0D0,
+            #8FBC8F
+        );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 0px 1.5px rgba(181, 168, 200, 0.4);
+}
+
+.services-title {
+    font-size: 2.75rem;
+    font-weight: 700;
+    color: #2D3748;
+    margin-bottom: 1.25rem;
+}
+
+.services-subtitle {
+    font-size: 1.1rem;
+    color: #718096;
+    line-height: 1.6;
+}
