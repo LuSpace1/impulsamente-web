@@ -1,13 +1,10 @@
-
-/*  mantendra el color aunque tenga el mouse encima*/
-.logo-brand:hover,
-.logo-brand:focus {
+.navbar-brand.logo-brand:hover,
+.navbar-brand.logo-brand:focus {
   color: transparent;
 }
-
-.logo-brand {
+.navbar-brand.logo-brand {
   font-size: 1.75rem; 
-  font-weight: 500;  
+  font-weight: 500;   
   
   /* Define el fondo como un gradiente */
   background: linear-gradient(
@@ -21,13 +18,11 @@
   -webkit-background-clip: text; 
   background-clip: text;
   color: transparent;
+  
   text-shadow: 0px 0px 1.5px rgba(181, 168, 200, 0.4); 
 }
 
-/*  Estilo para la parte "Mente"
-   ========================================================= */
 .logo-brand span {
-  /* que "Mente" sea más grueso (bold) */
   font-weight: 700;
 }
 /*  Estilo del Navbar principal
@@ -63,50 +58,40 @@
 
 /*  Estilo del link ACTIVO o al pasar el mouse (hover)
    ========================================================= */
-/* Esto funciona con 'spy={true}' de react-scroll. */
 .navbar-personalizado .nav-link.active,
 .navbar-personalizado .nav-link:hover {
-  color: #000000; /* Color negro fuerte */
-  font-weight: 700; /* Más grueso cuando está activo */
+  color: #000000; 
+  font-weight: 700; 
 }
 
 /* Estilo del botón "Agendar" 
    ========================================================= */
-.btn-agendar {
-  background-color: #f4c7c7; 
-  
-  /* Borde del mismo color */
-  border-color: #f4c7c7; 
-  
-  /* Color de texto blanco */
+.btn.btn-agendar-cita {
+  background-color: #F89880; 
+  border-color: #F89880; 
   color: #FFFFFF; 
-  
-  /* Bordes súper redondeados  */
   border-radius: 50em; 
-  
-  /* Espaciado interno */
   padding: 0.6rem 1.5rem; 
-  
   font-weight: 600;
-  
-  /* Transición suave para todos los efectos */
   transition: all 0.3s ease;
   
-  /* Asegura que el texto este centrado */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  /* Asegúrate de que no tenga la sombra azul de "focus" de Bootstrap */
+  box-shadow: none;
 }
 
-/* 5. Efecto Hover para el botón "Agendar"
-   ========================================================= */
-.btn-agendar:hover {
-  /* Un poco más oscuro al pasar el mouse */
+/* CAMBIO AQUÍ: También en el :hover */
+.btn.btn-agendar-cita:hover {
   background-color: #E68A73; 
   border-color: #E68A73;
-  color: #FFFFFF; 
-  
-  /* Efecto sutil de "salto" y sombra */
+  color: #FFFFFF;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* (Opcional) Eliminar el "resplandor" azul al hacer clic */
+.btn.btn-agendar-cita:focus,
+.btn.btn-agendar-cita:active {
+  box-shadow: 0 0 0 0.25rem rgba(248, 152, 128, 0.5); /* Sombra color coral */
+  background-color: #E68A73;
+  border-color: #E68A73;
 }
