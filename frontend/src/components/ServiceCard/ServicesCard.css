@@ -1,0 +1,199 @@
+/* --- ServicesCard.css --- */
+/* (Controla el estilo de las tarjetas) */
+
+.service-card {
+    background: #FFF5F5;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: left;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    border: 2px solid #FED7D7;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 400px;
+}
+
+.service-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+@media (min-width: 992px) {
+    .recommended-col {
+        transform: translateY(-25px);
+        z-index: 10;
+        min-height: 450px;
+    }
+}
+
+.service-card-recommended {
+    background: #1A1B22;
+    color: white;
+    border: 2px solid #1A1B22;
+    box-shadow: 0 10px 40px rgba(26, 27, 34, 0.5);
+}
+
+.recommended-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #48BB78;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.service-card-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.service-card-sparkles {
+    margin-bottom: 12px;
+}
+
+.service-card-sparkles i {
+    font-size: 2.5rem;
+    background: linear-gradient(to right,
+            #F89880,
+            #B5A8C8,
+            #88C0D0,
+            #8FBC8F);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 0px 1.5px rgba(181, 168, 200, 0.4);
+}
+
+.service-card-icon-wrapper .bi {
+    font-size: 2.5rem;
+    background: linear-gradient(to right,
+            #F89880,
+            #B5A8C8,
+            #88C0D0,
+            #8FBC8F);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 0px 1.5px rgba(181, 168, 200, 0.4);
+}
+
+.service-card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #4A5568;
+}
+
+.service-card-recommended .service-card-title {
+    color: white;
+}
+
+.service-card-description {
+    font-size: 0.95rem;
+    color: #A0AEC0;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.service-card-recommended .service-card-description {
+    color: #D1D5DB;
+    margin-top: -10px;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.service-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+    color: #4A5568;
+}
+
+.service-card-recommended .service-features li {
+    color: #FFFFFF;
+}
+
+.service-features li .bi-check {
+    flex-shrink: 0;
+    line-height: 1;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background: linear-gradient(to right,
+            #F89880,
+            #B5A8C8,
+            #88C0D0,
+            #8FBC8F
+        );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 0px 0.5px rgba(181, 168, 200, 0.2);
+}
+
+.service-card-recommended .service-features li .bi-check-circle-fill {
+    flex-shrink: 0;
+    line-height: 1;
+    font-size: 1.1rem;
+    background: linear-gradient(to right,
+            #F89880,
+            #B5A8C8,   
+            #88C0D0,
+            #8FBC8F
+        );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 0px 0.5px rgba(181, 168, 200, 0.2);
+}
+
+.service-card-button {
+    display: block;
+    width: 100%;
+    padding: 12px 28px;
+    background: transparent;
+    color: #2D3748;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    border: 1px solid #D1D5DB;
+    text-align: center;
+}
+
+.service-card-button:hover {
+    background: #F9FAFB;
+    color: #1F2937;
+    border-color: #AAB2BD;
+}
+
+.service-card-recommended .service-card-button {
+    background: white;
+    color: #2D3748;
+    border: 1px solid white;
+}
+
+.service-card-recommended .service-card-button:hover {
+    background: #F3F4F6;
+    color: #2D3748;
+    border-color: #F3F4F6;
+}
