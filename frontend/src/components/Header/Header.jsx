@@ -83,7 +83,7 @@ function Header() {
               contactanos
             </Nav.Link>
 
-            <Button as={RouterLink} to="/agendar" className="btn-agendar-cita">
+            <Button as={RouterLink} to="/planes" className="btn-agendar-cita">
               Agendar
             </Button>
           </Nav>

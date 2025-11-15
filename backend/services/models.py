@@ -20,11 +20,12 @@ class Professional(models.Model):
     
     años_experiencia = models.IntegerField(blank=True, null=True) 
 
-    calendly_username = models.CharField(max_length=100, unique=True)
-    
+    calendly_url = models.URLField(max_length=255, unique=True)
+
     TIPO_SERVICIO_CHOICES = [
         ('psicologia', 'Psicología'),
         ('metodologia', 'Metodología'),
+        ('integral', 'Plan Integral'),
     ]
     tipo_servicio = models.CharField(
         max_length=20, # Longitud suficiente para 'psicologia' o 'metodologia'

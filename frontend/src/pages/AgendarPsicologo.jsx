@@ -1,17 +1,5 @@
-import {Link} from 'react-router-dom'
-//PlaceHolder de agendar-psicologo
-function AgendarPsicologo() {
-  return (
-    <div>
-      <h1>PlaceHolder de agendar psicologo</h1>
-      <p> Asi es soy un placeholder gente miren: Lore ipsum etc.</p>
-      <p>No entienden la fokin vibra</p>
+import PlanSelectionView from "../components/Plans/PlanSelectionView.jsx";
 
-      <div>
-        <Link to={"/"}>Ir al Inicio</Link>
-      </div>
-    </div>
-  );
-}
+const AgendarPsicologo = () => <PlanSelectionView service="psicologia" />;
 
-export default AgendarPsicologo; // Exportarla para que app.jsx la pueda ver
+export default AgendarPsicologo;

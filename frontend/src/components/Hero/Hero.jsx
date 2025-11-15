@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap'; 
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Statistics from '../Statistics/Statistics.jsx';
 const Hero = () => {
   // --- Colores personalizados del Mockup ---
@@ -55,12 +56,14 @@ const Hero = () => {
               </p>
 
               <div className="d-grid gap-3 d-md-flex justify-content-md-start">
-                <Button 
-                  size="lg" 
+                <Button
+                  as={Link}
+                  to="/planes"
+                  size="lg"
                   className="me-md-2"
-                  style={{ 
-                    backgroundColor: colorBoton, 
-                    borderColor: colorBoton, 
+                  style={{
+                    backgroundColor: colorBoton,
+                    borderColor: colorBoton,
                     color: '#ffffff',
                     fontWeight: 'bold'
                   }}

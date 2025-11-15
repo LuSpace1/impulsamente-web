@@ -1,0 +1,78 @@
+.professional-card {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 20px 45px rgba(31, 38, 135, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 280px;
+  max-width: 320px;
+}
+
+.professional-card__image-wrapper {
+  position: relative;
+  padding-top: 66%;
+  background: linear-gradient(135deg, rgba(74, 58, 255, 0.15), rgba(246, 216, 96, 0.15));
+}
+
+.professional-card__image-wrapper img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.professional-card__placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #6c63ff;
+  font-weight: 600;
+}
+
+.professional-card__body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.professional-card__title {
+  font-weight: 600;
+  color: #2a1fbf;
+  margin-bottom: 0.25rem;
+}
+
+.professional-card__specialty {
+  font-size: 0.95rem;
+  color: #5f6c7b;
+}
+
+.professional-card__experience {
+  font-size: 0.9rem;
+  color: #8a94a6;
+}
+
+.professional-card__bio {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.professional-card__button {
+  margin: 0 1.5rem 1.5rem;
+  background: linear-gradient(90deg, #4a3aff 0%, #6c5bff 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.professional-card__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(74, 58, 255, 0.3);
+}

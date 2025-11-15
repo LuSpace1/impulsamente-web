@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders', # Habilita CORS para permitir peticiones desde el frontend (React)
-    'services', 
+    'services',
     'rest_framework',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +64,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",   # Frontend React vite (modo desarrollo)
     "http://127.0.0.1:5173",   # Alternativa local (algunos navegadores usan esta IP)
 ]
+
+CORS_ALLOW_CREDENTIALS = True
 
 TEMPLATES = [
     {
@@ -139,4 +142,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 
 # Ruta en el disco duro donde se guardarán los archivos subidos
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# --- Configuración de Django REST Framework ---
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+}
+
+
+# --- Configuración de sesiones ---
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 5  # 5 días
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False

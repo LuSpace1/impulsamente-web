@@ -1,0 +1,85 @@
+.plans-overview {
+  background: linear-gradient(120deg, #f8f9ff 0%, #ffffff 60%);
+  padding: 4rem 1.5rem;
+}
+
+.plans-overview__container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.plans-overview__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.plans-overview__header h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+}
+
+.plans-overview__header p {
+  color: #4b5563;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.plans-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+}
+
+.plans-overview__card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 2rem;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 25px 50px rgba(15, 23, 42, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.plans-overview__card h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.plans-overview__cta {
+  margin-top: auto;
+  font-weight: 600;
+  color: #4a3aff;
+}
+
+.plans-overview__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 35px 70px rgba(76, 91, 255, 0.25);
+}
+
+.plans-overview__card--metodologia {
+  border-top: 6px solid #4a3aff;
+}
+
+.plans-overview__card--integral {
+  border-top: 6px solid #f6d860;
+}
+
+.plans-overview__card--psicologia {
+  border-top: 6px solid #6c5bff;
+}
+
+@media (max-width: 768px) {
+  .plans-overview {
+    padding: 3rem 1rem;
+  }
+
+  .plans-overview__header h1 {
+    font-size: 2.2rem;
+  }
+}

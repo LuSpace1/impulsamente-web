@@ -1,0 +1,32 @@
+.site-footer {
+  background: linear-gradient(90deg, #2a1fbf 0%, #6c5bff 100%);
+  color: #ffffff;
+  padding: 3rem 1rem;
+  margin-top: 4rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.footer-title span {
+  color: #f6d860;
+}
+
+.footer-copy {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.footer-small {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}

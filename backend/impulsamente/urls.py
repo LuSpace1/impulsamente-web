@@ -22,6 +22,7 @@ from django.conf.urls.static import static # Importa static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('services.urls')),
+    path('api/accounts/', include('accounts.urls')),
 ]
 
 # Añade esto AL FINAL para servir archivos media en DESARROLLO

@@ -11,10 +11,11 @@ class ProfessionalAdmin(admin.ModelAdmin):
     """
     # Columnas a mostrar en la lista principal
     list_display = (
-        'nombre_completo', 
-        'tipo_servicio', 
+        'nombre_completo',
+        'tipo_servicio',
         'activo',
-        'orden', 
+        'orden',
+        'calendly_url',
     )
     # Filtros que aparecerán en la barra lateral derecha
     list_filter = ('tipo_servicio', 'activo')

@@ -14,8 +14,8 @@ const ServicesSection = () => {
                 "Análisis de datos"
             ],
             isRecommended: false,
-            buttonText: "Cotizar Plan",
-            link: "/cotizar-metodologia",
+            buttonText: "Agendar ahora",
+            link: "/planes/metodologia",
             icon: "bi bi-file-earmark-text", 
             accentColor: "#E53E3E" 
         },
@@ -29,8 +29,8 @@ const ServicesSection = () => {
                 "15% OFF incluido"
             ],
             isRecommended: true,
-            buttonText: "Cotizar Plan",
-            link: "/cotizar-integral",
+            buttonText: "Agendar ahora",
+            link: "/planes/integral",
             icon: "bi bi-stars", 
             accentColor: null 
         },
@@ -44,8 +44,8 @@ const ServicesSection = () => {
                 "Confianza y oratoria"
             ],
             isRecommended: false,
-            buttonText: "Cotizar Plan",
-            link: "/cotizar-psicologico",
+            buttonText: "Agendar ahora",
+            link: "/planes/psicologia",
             icon: "bi bi-person",
             accentColor: "#3182CE" 
         }

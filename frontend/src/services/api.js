@@ -1,18 +1,45 @@
-import axios from 'axios';
+import axios from "axios";
 
-//configuracion de axios para las peticiones
-const apiService = axios.create({
-    baseURL: 'http://localhost:8000', //URL del backend
-    timeout : 1000, //Si la peticion demora mas de 1Seg esta se cancela
-})
-export default apiService;
+const apiClient = axios.create({
+  baseURL: "http://localhost:8000",
+  withCredentials: true,
+  timeout: 10000,
+});
 
+apiClient.defaults.xsrfCookieName = "csrftoken";
+apiClient.defaults.xsrfHeaderName = "X-CSRFToken";
 
-//Peticiones especificas
-export const getMetodologos = () => {
-  return apiService.get("/api/Metodologos"); //Url donde se consultaran los metodologos
-}
+export const fetchProfessionalsByService = (service) =>
+  apiClient.get(`/api/professionals/${service}/`);
 
-export const getPsicologos = () => {
-  return apiService.get("/api/Psicologos"); //Url donde se consultaran los Psicologos
-};
+export const fetchProfessionalDetail = (id) =>
+  apiClient.get(`/api/professionals/${id}/`);
+
+export const getCsrfToken = () => apiClient.get("/api/accounts/csrf/");
+
+export const adminLogin = (payload) =>
+  apiClient.post("/api/accounts/login/", payload);
+
+export const adminLogout = () => apiClient.post("/api/accounts/logout/");
+
+export const fetchAdminSession = () => apiClient.get("/api/accounts/session/");
+
+export const adminChangePassword = (payload) =>
+  apiClient.post("/api/accounts/password/change/", payload);
+
+export const adminListProfessionals = (params) =>
+  apiClient.get("/api/accounts/professionals/", { params });
+
+export const adminCreateProfessional = (payload) =>
+  apiClient.post("/api/accounts/professionals/", payload);
+
+export const adminUpdateProfessional = (id, payload) =>
+  apiClient.put(`/api/accounts/professionals/${id}/`, payload);
+
+export const adminDeleteProfessional = (id) =>
+  apiClient.delete(`/api/accounts/professionals/${id}/`);
+
+export const adminToggleProfessional = (id) =>
+  apiClient.post(`/api/accounts/professionals/${id}/toggle_active/`);
+
+export default apiClient;

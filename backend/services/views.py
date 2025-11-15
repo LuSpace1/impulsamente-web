@@ -1,33 +1,28 @@
-from rest_framework.generics import ListAPIView #Importamos la clase base de la vista que lista objetos en DRF.
-from .models import Professional 
-from .serializers import ProfessionalSerializer #Importamos serializer para convertir los objetos en JSON.
+from django.http import Http404
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 
-class PsychologyProfesionalsView(ListAPIView):
-    """ 
-    Vista que devuelve la lista de profesionales de psicología activos.
-    Endpoint: GET /api/professionals/psychology/
-    Filtros aplicados:
-    - tipo_servicio = 'psicologia'
-    - activo = True
-    Orden: Por campo 'orden' (ascendente) 
-    """
-    serializer_class = ProfessionalSerializer #Atributo predefinido en las clases de las listas genericas como ListAPIView en donde especificamos nuestro serializer.
-    def get_queryset(self): #Usamos get_queryset porque es mas flexible con consultas complejas que queryset().
-        """
-        Devuelve el conjunto de profesionales filtrados.
-        Returns: QuerySet: Profesionales de psicología activos, ordenados.
-        """
-        return Professional.objects.filter(tipo_servicio = 'psicologia', activo = True).order_by('orden')
-    """
-    Esta query ORM es equivalente en lenguaje SQL a la siguiente consulta:
-    SELECT * FROM professional 
-                WHERE tipo_servicio='psicologia' 
-                AND activo=True 
-                ORDER BY orden
-    Finalmente devuelve un response HTTP serializado a JSON.
-    """
-#Usamos la misma logica para los metodologos.
-class MethodologyProfessionalsView(ListAPIView):
-    serializer_class = ProfessionalSerializer
+from .models import Professional
+from .serializers import ProfessionalPublicSerializer
+
+
+class ProfessionalByServiceView(ListAPIView):
+    """Devuelve profesionales activos según el tipo de servicio solicitado."""
+
+    serializer_class = ProfessionalPublicSerializer
+
     def get_queryset(self):
-        return Professional.objects.filter(tipo_servicio='metodologia', activo=True).order_by('orden')
+        service = self.kwargs.get("service")
+        valid_services = {choice for choice, _ in Professional.TIPO_SERVICIO_CHOICES}
+        if service not in valid_services:
+            raise Http404("Servicio no encontrado")
+        return (
+            Professional.objects.filter(tipo_servicio=service, activo=True)
+            .order_by("orden", "nombre_completo")
+        )
+
+
+class ActiveProfessionalDetailView(RetrieveAPIView):
+    """Devuelve el detalle de un profesional activo."""
+
+    serializer_class = ProfessionalPublicSerializer
+    queryset = Professional.objects.filter(activo=True)

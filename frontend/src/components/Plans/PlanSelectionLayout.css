@@ -1,0 +1,63 @@
+.plan-page {
+  background: linear-gradient(180deg, #f6f8ff 0%, #ffffff 70%);
+  min-height: calc(100vh - 120px);
+  padding: 3rem 1.5rem 4rem;
+}
+
+.plan-page__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.plan-page__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.plan-page__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.plan-page__subtitle {
+  color: #4b5563;
+  max-width: 720px;
+}
+
+.plan-page__carousel {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
+}
+
+.plan-page__carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.plan-page__carousel::-webkit-scrollbar-thumb {
+  background: rgba(74, 58, 255, 0.4);
+  border-radius: 999px;
+}
+
+.plan-page__empty {
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(74, 58, 255, 0.06);
+  color: #4a3aff;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .plan-page {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .plan-page__title {
+    font-size: 2rem;
+  }
+}
