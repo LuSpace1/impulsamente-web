@@ -1,0 +1,123 @@
+/* --- Estilos para la sección de FAQ --- */
+
+.faq-section {
+  width: 100%; /* Ahora sí, ocupa el 100% del ancho disponible */
+  padding: 60px 0; /* Padding vertical, sin padding horizontal aquí */
+  font-family: Arial, sans-serif;
+  
+  /* --- CAMBIO AQUÍ: Fondo de gradiente --- */
+  background: linear-gradient(90deg, #ffeacc 0%, #e6f7ff 100%); /* Tus colores */
+  /* NO HAY border-radius ni box-shadow aquí, ya que queremos que sea de borde a borde */
+  
+  /* Centrar el contenido interno y darle un ancho máximo */
+  display: flex; /* Para centrar el contenido */
+  flex-direction: column; /* Organiza el contenido en columna */
+  align-items: center; /* Centra horizontalmente el contenido */
+}
+
+.faq-content-wrapper {
+  max-width: 900px; 
+  width: 100%; 
+  padding: 0 20px; /* Padding horizontal para el contenido */
+  box-sizing: border-box; /* Para que el padding no desborde el width */
+}
+.faq-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.faq-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.faq-header p {
+  font-size: 1.125rem;
+  color: #777;
+}
+
+/* --- Estilos del Acordeón --- */
+
+.accordion {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-item {
+  background-color: #ffffff;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #fcfcfc;
+}
+
+.accordion-header span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.accordion-icon {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #555;
+  border-bottom: 2px solid #555;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* --- ESTILOS DEL CUERPO (CERRADO) --- */
+/* --- ESTE ES EL GRAN CAMBIO --- */
+.accordion-body {
+  display: none; /* Oculta el elemento completamente */
+  padding: 0;
+  margin: 0;
+}
+
+.accordion-body p {
+  padding: 0;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+  text-align: left;
+}
+
+/* --- ESTILOS PARA EL ÍTEM ABIERTO --- */
+
+.accordion-item.open .accordion-header {
+  background: linear-gradient(90deg, #fdecec 0%, #e6f0fa 100%);
+}
+
+.accordion-item.open .accordion-header span {
+  color: #333;
+}
+
+.accordion-item.open .accordion-icon {
+  transform: rotate(-135deg);
+  border-color: #333;
+}
+
+/* --- Muestra el cuerpo y aplica el padding --- */
+.accordion-item.open .accordion-body {
+  display: block; /* Lo vuelve a mostrar */
+  padding: 0 25px 25px 25px;
+}
+
+.accordion-item.open .accordion-body p {
+  padding: 0; /* El párrafo interno no necesita padding extra */
+}
