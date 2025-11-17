@@ -52,3 +52,21 @@ class Professional(models.Model):
         # Nombres legibles en el Admin
         verbose_name = "Profesional"
         verbose_name_plural = "Profesionales"
+
+class ContactSubmission(models.Model):
+    """
+    Modelo para guardar los envíos del formulario de contacto.
+    """
+    nombre = models.CharField(max_length=100)
+    email = models.EmailField()
+    mensaje = models.TextField()
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    leido = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Mensaje de {self.nombre} ({self.email})"
+
+    class Meta:
+        verbose_name = "Envío de Contacto"
+        verbose_name_plural = "Envíos de Contacto"
+        ordering = ['-fecha_creacion'] # Mostrar los más nuevos primero
