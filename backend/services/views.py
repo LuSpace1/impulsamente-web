@@ -1,6 +1,6 @@
 from rest_framework.generics import ListAPIView #Importamos la clase base de la vista que lista objetos en DRF.
-from .models import Professional 
-from .serializers import ProfessionalSerializer #Importamos serializer para convertir los objetos en JSON.
+from .models import Professional, ContactSubmission
+from .serializers import ProfessionalSerializer, ContactMessageSerializer #Importamos serializer para convertir los objetos en JSON.
 
 class PsychologyProfesionalsView(ListAPIView):
     """ 
@@ -31,3 +31,13 @@ class MethodologyProfessionalsView(ListAPIView):
     serializer_class = ProfessionalSerializer
     def get_queryset(self):
         return Professional.objects.filter(tipo_servicio='metodologia', activo=True).order_by('orden')
+    
+
+class ContactCreateView(generics.CreateAPIView):
+    """
+    Vista de API para recibir y guardar un envío del formulario de contacto.
+    Responde a la Tarea IMP-61.
+    """
+    queryset = ContactSubmission.objects.all()
+    # Usa el serializer que creamos y corregimos
+    serializer_class = ContactMessageSerializer
