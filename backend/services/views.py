@@ -1,6 +1,7 @@
-from rest_framework.generics import ListAPIView #Importamos la clase base de la vista que lista objetos en DRF.
+from rest_framework.generics import ListAPIView, CreateAPIView #Importamos la clase base de la vista que lista objetos en DRF.
 from .models import Professional, ContactSubmission
-from .serializers import ProfessionalSerializer, ContactMessageSerializer #Importamos serializer para convertir los objetos en JSON.
+from .serializers import ProfessionalSerializer, ContactMessageSerializer
+#Importamos serializer para convertir los objetos en JSON.
 
 class PsychologyProfesionalsView(ListAPIView):
     """ 
@@ -33,7 +34,7 @@ class MethodologyProfessionalsView(ListAPIView):
         return Professional.objects.filter(tipo_servicio='metodologia', activo=True).order_by('orden')
     
 
-class ContactCreateView(generics.CreateAPIView):
+class ContactCreateView(CreateAPIView):
     """
     Vista de API para recibir y guardar un envío del formulario de contacto.
     Responde a la Tarea IMP-61.
