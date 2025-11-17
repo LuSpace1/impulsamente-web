@@ -59,6 +59,7 @@ class ContactSubmission(models.Model):
     """
     nombre = models.CharField(max_length=100)
     email = models.EmailField()
+    servicio_interes = models.CharField(max_length=100, blank=True, null=True)
     mensaje = models.TextField()
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     leido = models.BooleanField(default=False)
