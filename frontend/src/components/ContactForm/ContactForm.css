@@ -1,0 +1,134 @@
+/* Contenedor principal de la tarjeta */
+.contact-form-card {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px; /* Bordes un poco más suaves */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Sombra elegante */
+  text-align: left;
+  color: #333;
+  transition: all 0.4s ease-in-out; /* Animación suave al crecer */
+  position: relative; /* Para posicionar el botón de cerrar */
+  overflow: hidden; /* Mantiene todo contenido */
+}
+
+/* Estilo cuando está expandido (opcional si queremos cambiar algo específico del contenedor) */
+.contact-form-card.expanded {
+  box-shadow: 0 12px 30px rgba(255, 155, 138, 0.15); /* Sombra con toque de color al abrir */
+}
+
+/* Header */
+.card-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.contact-form-card h3 {
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.contact-form-card .card-description {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin: 0;
+}
+
+/* --- VISTA 1: Botón de Expansión (CTA) --- */
+.cta-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.btn-expand-form {
+  background-color: #ffffff;
+  border: 2px solid #FFAE9E; /* Borde color salmón */
+  color: #FFAE9E;
+  padding: 10px 25px;
+  border-radius: 30px; /* Botón redondeado */
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-expand-form:hover {
+  background-color: #FFAE9E;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* --- VISTA 2: Formulario --- */
+.form-control {
+  width: 100%;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #FFAE9E; /* Foco color salmón */
+  background-color: #fff;
+}
+
+/* Botón de Enviar */
+.btn-solicitar-info {
+  background-color: #FFAE9E !important;
+  border: none !important;
+  color: white !important;
+  padding: 12px 20px !important;
+  border-radius: 8px !important;
+  width: 100% !important; 
+  font-size: 1.1rem !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background-color 0.3s ease !important;
+}
+
+.btn-solicitar-info:hover {
+  background-color: #FF9B8A !important;
+}
+
+/* Botón de Cerrar (X) */
+.btn-close-form {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.3s;
+}
+
+.btn-close-form:hover {
+  color: #FF9B8A;
+}
+
+/* Animación de entrada para el contenido */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
