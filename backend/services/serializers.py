@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Professional
+from .models import Professional, ContactSubmission
 
 
 class ProfessionalSerializer(serializers.ModelSerializer):
@@ -7,8 +7,11 @@ class ProfessionalSerializer(serializers.ModelSerializer):
     Serializer de LECTURA (Para mostrar datos en la web y dashboard)
     """
     foto = serializers.SerializerMethodField()
-
     class Meta:
+        """
+        Clase que configura el comportamiento del serializer.
+        Define que modelo usa como referencia y que campos incluir.
+        """
         model = Professional
         fields = [
             'id',
@@ -42,3 +45,13 @@ class ProfessionalCRUDSerializer(serializers.ModelSerializer):
     class Meta:
         model = Professional
         fields = '__all__'
+
+
+class ContactMessageSerializer(serializers.ModelSerializer):
+    """
+    Serializer para el modelo ContactSubmission (Tarea IMP-61).
+    """
+    class Meta:
+        model = ContactSubmission
+        fields = ('nombre', 'email', 'servicio_interes', 'mensaje')
+        read_only_fields = ('id', 'fecha_creacion', 'leido')

@@ -7,7 +7,8 @@ from .views import (
     LoginView,
     LogoutView,
     CheckAuthView,
-    ChangePasswordView
+    ChangePasswordView,
+    ContactCreateView
 )
 
 router = DefaultRouter()
@@ -20,6 +21,7 @@ urlpatterns = [
          name='psychology-professionals'),
     path('professionals/methodology/', MethodologyProfessionalsView.as_view(),
          name='methodology-professionals'),
+    path('contact/', ContactCreateView.as_view(), name='crear-contacto'),
 
     # --- Rutas de Autenticación ---
     path('auth/login/', LoginView.as_view(), name='auth_login'),
