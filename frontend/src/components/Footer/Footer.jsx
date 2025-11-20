@@ -1,15 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 import ContactForm from '../ContactForm/ContactForm';
 // Importamos TODOS los íconos necesarios (Sociales + Contacto)
 import { 
   FaInstagram, 
   FaFacebookF, 
-  FaLinkedinIn, 
   FaWhatsapp,
   FaMapMarkerAlt, // Icono de Ubicación
   FaEnvelope,     // Icono de Email
-  FaPhone         // Icono de Teléfono
+  FaPhone,         // Icono de Teléfono
+  FaLock
 } from 'react-icons/fa'; 
 
 const Footer = () => {
@@ -73,14 +74,9 @@ const Footer = () => {
                 <li><a href="#">Privacidad</a></li>
                 <li>
                   {/* Apunta directamente a tu URL de Django Admin */}
-                  <a 
-                    href="http://127.0.0.1:8000/admin/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    title="Acceso Administrativo" // Tooltip al pasar el mouse
-                  >
-                    Acceso Administrador
-                  </a>
+                  <Link to="/admin-login" title="Acceso Administrativo">
+                    <FaLock style={{ fontSize: '0.8rem', marginBottom: '2px' }} />
+                  </Link>
                 </li>
               </ul>
             </div>
