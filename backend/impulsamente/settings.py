@@ -143,10 +143,13 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",   # Frontend React vite (modo desarrollo)
     "http://127.0.0.1:5173",   # Alternativa local
 ]
+
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
+
+# IMPORTANTE: Permite enviar cookies de sesión (Login)
 CORS_ALLOW_CREDENTIALS = True
 
 # Métodos permitidos
