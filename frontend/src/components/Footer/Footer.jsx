@@ -26,10 +26,9 @@ const Footer = () => {
               y éxito académico. Estamos aquí para acompañarte en cada paso.
             </p>
             <div className="social-icons">
-              <a href="https://www.instagram.com/impulsamente/" target="_blank" rel="noopener noreferrer" className="social-icon"><FaInstagram /></a>
-              <a href="https://www.facebook.com/impulsamente/" target="_blank" rel="noopener noreferrer" className="social-icon"><FaFacebookF /></a>
-              <a href="https://www.linkedin.com/company/impulsamente/" target="_blank" rel="noopener noreferrer" className="social-icon"><FaLinkedinIn /></a>
-              <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" className="social-icon"><FaWhatsapp /></a>
+              <a href="https://www.instagram.com/impulsa.tesis.cl/" target="_blank" rel="noopener noreferrer" className="social-icon"><FaInstagram /></a>
+              <a href="https://www.facebook.com/profile.php?id=61553777321723" target="_blank" rel="noopener noreferrer" className="social-icon"><FaFacebookF /></a>
+              <a href="https://wa.me/56945557703" target="_blank" rel="noopener noreferrer" className="social-icon"><FaWhatsapp /></a>
             </div>
           </div>
           
@@ -44,11 +43,11 @@ const Footer = () => {
               </li>
               <li>
                 <FaEnvelope className="contact-icon" /> 
-                hola@impulsamente.cl
+                Impulsa.tesis.cl
               </li>
               <li>
                 <FaPhone className="contact-icon" /> 
-                +56 9 1234 5678
+                +56 9 4555 7703
               </li>
             </ul>
           </div>
