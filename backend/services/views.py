@@ -138,3 +138,13 @@ class ContactCreateView(CreateAPIView):
     queryset = ContactSubmission.objects.all()
     # Usa el serializer que creamos y corregimos
     serializer_class = ContactMessageSerializer
+
+
+class ContactListView(ListAPIView):
+    """
+    Vista exclusiva para administradores.
+    Devuelve la lista de todos los mensajes de contacto recibidos.
+    """
+    queryset = ContactSubmission.objects.all().order_by('-fecha_creacion')
+    serializer_class = ContactMessageSerializer
+    permission_classes = [IsAuthenticated] # ¡Seguridad! Solo usuarios logueados pueden ver esto

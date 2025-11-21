@@ -8,7 +8,8 @@ from .views import (
     LogoutView,
     CheckAuthView,
     ChangePasswordView,
-    ContactCreateView
+    ContactCreateView,
+    ContactListView
 )
 
 router = DefaultRouter()
@@ -27,8 +28,8 @@ urlpatterns = [
     path('auth/login/', LoginView.as_view(), name='auth_login'),
     path('auth/logout/', LogoutView.as_view(), name='auth_logout'),
     path('auth/check/', CheckAuthView.as_view(), name='auth_check'),
-    path('auth/change-password/', ChangePasswordView.as_view(),
-         name='auth_change_password'),
+    path('auth/change-password/', ChangePasswordView.as_view(),name='auth_change_password'),
+    path('contact/list/', ContactListView.as_view(), name='contact-list'),
 
     # --- Rutas del Admin (CRUD) ---
     path('', include(router.urls)),
