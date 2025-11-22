@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
@@ -9,9 +9,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-
-from .models import Professional, UserProfile
-from .serializers import ProfessionalSerializer, ProfessionalCRUDSerializer
+from .models import Professional, UserProfile, ContactSubmission
+from .serializers import ProfessionalSerializer, ProfessionalCRUDSerializer, ContactMessageSerializer
 
 
 class CsrfExemptSessionAuthentication(SessionAuthentication):
@@ -19,7 +18,6 @@ class CsrfExemptSessionAuthentication(SessionAuthentication):
     Clase personalizada que desactiva la validación CSRF de DRF
     pero mantiene la sesión del usuario activa.
     """
-
     def enforce_csrf(self, request):
         return 
 
@@ -40,6 +38,16 @@ class MethodologyProfessionalsView(ListAPIView):
         return Professional.objects.filter(tipo_servicio='metodologia', activo=True).order_by('orden')
 
 
+class ContactCreateView(CreateAPIView):
+    """
+    Vista de API para recibir y guardar un envío del formulario de contacto.
+    Permite el método POST sin autenticación.
+    """
+    queryset = ContactSubmission.objects.all()
+    serializer_class = ContactMessageSerializer
+    permission_classes = [AllowAny] # Importante para que cualquiera pueda escribir
+
+
 class AdminProfessionalViewSet(ModelViewSet):
     queryset = Professional.objects.all().order_by('orden')
     permission_classes = [IsAuthenticated]
@@ -49,7 +57,6 @@ class AdminProfessionalViewSet(ModelViewSet):
         if self.action in ['create', 'update', 'partial_update']:
             return ProfessionalCRUDSerializer
         return ProfessionalSerializer
-
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -80,14 +87,12 @@ class LoginView(APIView):
         return Response({'error': 'Credenciales inválidas'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
-
 class LogoutView(APIView):
     authentication_classes = (CsrfExemptSessionAuthentication,)
 
     def post(self, request):
         logout(request)
         return Response({'success': True})
-
 
 
 class CheckAuthView(APIView):
@@ -101,7 +106,6 @@ class CheckAuthView(APIView):
                 pass
             return Response({'authenticated': True, 'username': request.user.username, 'must_change_password': must_change})
         return Response({'authenticated': False})
-
 
 
 class ChangePasswordView(APIView):
@@ -128,3 +132,15 @@ class ChangePasswordView(APIView):
 
         login(request, user)
         return Response({'success': True})
+
+
+# --- Vista para LISTAR mensajes en el Admin ---
+class ContactListView(ListAPIView):
+    """
+    Vista exclusiva para administradores.
+    Devuelve la lista de todos los mensajes de contacto recibidos.
+    Endpoint: GET /api/contact/list/
+    """
+    queryset = ContactSubmission.objects.all().order_by('-fecha_creacion')
+    serializer_class = ContactMessageSerializer
+    permission_classes = [IsAuthenticated] 
