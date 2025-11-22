@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
@@ -10,8 +10,8 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
-from .models import Professional, UserProfile
-from .serializers import ProfessionalSerializer, ProfessionalCRUDSerializer
+from .models import Professional, UserProfile, ContactSubmission
+from .serializers import ProfessionalSerializer, ProfessionalCRUDSerializer, ContactMessageSerializer
 
 
 class CsrfExemptSessionAuthentication(SessionAuthentication):
@@ -128,3 +128,23 @@ class ChangePasswordView(APIView):
 
         login(request, user)
         return Response({'success': True})
+    
+
+class ContactCreateView(CreateAPIView):
+    """
+    Vista de API para recibir y guardar un envío del formulario de contacto.
+    Responde a la Tarea IMP-61.
+    """
+    queryset = ContactSubmission.objects.all()
+    # Usa el serializer que creamos y corregimos
+    serializer_class = ContactMessageSerializer
+
+
+class ContactListView(ListAPIView):
+    """
+    Vista exclusiva para administradores.
+    Devuelve la lista de todos los mensajes de contacto recibidos.
+    """
+    queryset = ContactSubmission.objects.all().order_by('-fecha_creacion')
+    serializer_class = ContactMessageSerializer
+    permission_classes = [IsAuthenticated] # ¡Seguridad! Solo usuarios logueados pueden ver esto

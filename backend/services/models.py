@@ -37,3 +37,21 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f"Perfil de {self.user.username}"
+class ContactSubmission(models.Model):
+    """
+    Modelo para guardar los envíos del formulario de contacto.
+    """
+    nombre = models.CharField(max_length=100)
+    email = models.EmailField()
+    servicio_interes = models.CharField(max_length=100, blank=True, null=True)
+    mensaje = models.TextField()
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    leido = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Mensaje de {self.nombre} ({self.email})"
+
+    class Meta:
+        verbose_name = "Envío de Contacto"
+        verbose_name_plural = "Envíos de Contacto"
+        ordering = ['-fecha_creacion'] # Mostrar los más nuevos primero

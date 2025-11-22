@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Hero from "../components/Hero/Hero";
 import { Element } from 'react-scroll';
 import ServicesSection from "../components/ServicesSection/ServicesSection";
+import Footer from '../components/Footer/Footer';
 
 function Home() {
   return (
@@ -39,17 +40,8 @@ function Home() {
       </Element>
 
       <Element name="seccion-contactanos">
-        {/* aqui va el componente de contacto*/}
-        <div
-          style={{
-            height: "100vh",
-            background: "lightgreen",
-            paddingTop: "70px",
-          }}
-        >
-          <h2>AQUÍ VA LA SECCIÓN DE CONTACTO</h2>
-        </div>
-      </Element>
+        <Footer />
+      </Element>
     </div>
   );
 }
