@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Professional
+from .models import Professional, ContactSubmission
 
 
 class ProfessionalSerializer(serializers.ModelSerializer):
@@ -42,3 +42,9 @@ class ProfessionalCRUDSerializer(serializers.ModelSerializer):
     class Meta:
         model = Professional
         fields = '__all__'
+
+class ContactMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactSubmission
+        fields = ('id', 'nombre', 'email', 'servicio_interes', 'mensaje', 'fecha_creacion', 'leido')
+        read_only_fields = ('id', 'fecha_creacion', 'leido')

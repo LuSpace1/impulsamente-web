@@ -7,26 +7,30 @@ from .views import (
     LoginView,
     LogoutView,
     CheckAuthView,
-    ChangePasswordView
+    ChangePasswordView,
+    ContactCreateView, 
+    ContactListView    
 )
 
 router = DefaultRouter()
-router.register(r'admin/professionals', AdminProfessionalViewSet,
-                basename='admin-professionals')
+router.register(r'admin/professionals', AdminProfessionalViewSet, basename='admin-professionals')
 
 urlpatterns = [
     # --- Rutas Públicas ---
-    path('professionals/psychology/', PsychologyProfesionalsView.as_view(),
-         name='psychology-professionals'),
-    path('professionals/methodology/', MethodologyProfessionalsView.as_view(),
-         name='methodology-professionals'),
+    path('professionals/psychology/', PsychologyProfesionalsView.as_view(), name='psychology-professionals'),
+    path('professionals/methodology/', MethodologyProfessionalsView.as_view(), name='methodology-professionals'),
+    
+    # --- Ruta para ENVIAR mensajes (Pública) ---
+    path('contact/', ContactCreateView.as_view(), name='crear-contacto'),
 
     # --- Rutas de Autenticación ---
     path('auth/login/', LoginView.as_view(), name='auth_login'),
     path('auth/logout/', LogoutView.as_view(), name='auth_logout'),
     path('auth/check/', CheckAuthView.as_view(), name='auth_check'),
-    path('auth/change-password/', ChangePasswordView.as_view(),
-         name='auth_change_password'),
+    path('auth/change-password/', ChangePasswordView.as_view(), name='auth_change_password'),
+    
+    # --- Ruta para LEER mensajes (Admin) ---
+    path('contact/list/', ContactListView.as_view(), name='contact-list'),
 
     # --- Rutas del Admin (CRUD) ---
     path('', include(router.urls)),

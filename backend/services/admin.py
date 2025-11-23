@@ -1,6 +1,6 @@
 # backend/services/admin.py
 from django.contrib import admin
-from .models import Professional # Importa tu modelo
+from .models import Professional, ContactSubmission # Importa tu modelo
 
 # Usa el decorador para registrar y configurar el modelo en el admin
 @admin.register(Professional)
@@ -22,3 +22,27 @@ class ProfessionalAdmin(admin.ModelAdmin):
     search_fields = ('nombre_completo', 'especialidad')
     # Orden por defecto de la lista
     ordering = ('orden', 'nombre_completo')
+
+@admin.register(ContactSubmission)
+class ContactSubmissionAdmin(admin.ModelAdmin):
+    """
+    Bandeja de entrada para ver los mensajes recibidos desde la web.
+    """
+    # Qué columnas ver en la lista
+    list_display = ('nombre', 'email', 'servicio_interes', 'fecha_creacion', 'leido')
+    
+    # Filtros laterales (Útil para ver solo los no leídos o por servicio)
+    list_filter = ('leido', 'servicio_interes', 'fecha_creacion')
+    
+    # Buscador
+    search_fields = ('nombre', 'email', 'mensaje')
+    
+    # Campos de solo lectura (Para no alterar lo que escribió el cliente)
+    readonly_fields = ('nombre', 'email', 'servicio_interes', 'mensaje', 'fecha_creacion')
+    
+    # Paginación
+    list_per_page = 25
+
+    # Desactivar el botón "Agregar" (Los mensajes solo llegan desde el formulario web)
+    def has_add_permission(self, request):
+        return False
