@@ -74,10 +74,18 @@ const ContactsManager = () => {
                 contacts.map((contact, index) => (
                   <tr key={index}>
                     {/* Fecha */}
-                    <td style={{minWidth: '120px'}}>
+                    <td style={{minWidth: '140px'}}>
                       <small className="text-muted">
                         <FaClock className="me-1"/> 
-                        {new Date(contact.fecha_creacion).toLocaleDateString()}
+                        {contact.fecha_creacion ? new Date(contact.fecha_creacion).toLocaleString('es-CL', {
+                          timeZone: 'America/Santiago',
+                          day: '2-digit',
+                          month: '2-digit',
+                          year: 'numeric',
+                          hour: '2-digit',    // <--- ESTO AGREGA LA HORA
+                          minute: '2-digit',  // <--- ESTO AGREGA LOS MINUTOS
+                          hour12: false       // Formato 24hrs (opcional)
+                        }) : '-'}
                       </small>
                     </td>
                     

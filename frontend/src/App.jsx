@@ -6,6 +6,7 @@ import AgendarIntegral from "./pages/AgendarIntegral/AgendarIntegral";
 import AgendarMetodologo from "./pages/AgendarMetodologo/AgendarMetodologo";
 import AgendarPsicologo from "./pages/AgendarPsicologo/AgendarPsicologo";
 import Home from "./pages/Home";
+import Footer from "./components/Footer/Footer.jsx";
 import Header from "./components/Header/Header";
 import ChangePassword from "./pages/admin/ChangePassword";
 // Admin Impulsamente
@@ -40,6 +41,7 @@ function App() {
         />
         <Route path="/admin-login" element={<AdminLogin />} />
       </Routes>
+      <Footer/>
     </>
   );
 }
