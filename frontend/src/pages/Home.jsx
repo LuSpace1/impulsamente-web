@@ -4,6 +4,9 @@ import { Element } from 'react-scroll';
 import ServicesSection from "../components/ServicesSection/ServicesSection";
 import FAQSection from '../components/FAQSection/FAQSection';
 import AboutSection from "../components/AboutSection/AboutSection.jsx";
+import VideoSection from "../components/VideoSection/VideoSection.jsx";
+import FloatingWhatsApp from "../components/FloatingWhatsApp/FloatingWhatsApp.jsx";
+
 
 function Home() {
   return (
@@ -16,9 +19,11 @@ function Home() {
       <Element name="seccion-nosotros">
         <AboutSection />
       </Element>
+      <VideoSection />
       <Element name="seccion-FAQ">
         <FAQSection />
       </Element>
+      <FloatingWhatsApp />
     </div>
   );
 }
