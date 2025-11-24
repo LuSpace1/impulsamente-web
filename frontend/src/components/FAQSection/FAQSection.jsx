@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './FAQSection.css';
 
-// --- PUEDES EDITAR TU CONTENIDO AQUÍ ---
+// --- (Tu array faqData sigue igual aquí) ---
 const faqData = [
   {
     question: '¿Cómo funcionan las sesiones?',
@@ -31,23 +31,29 @@ const faqData = [
 // -----------------------------------------
 
 const FAQSection = () => {
-  // Estado para saber qué ítem está abierto. Inicia en null (cerrado).
   const [openIndex, setOpenIndex] = useState(null);
 
   const handleToggle = (index) => {
-    // Si haces clic en el que ya está abierto, se cierra (null).
-    // Si haces clic en uno nuevo, se abre (index).
     setOpenIndex(openIndex === index ? null : index);
+  };
+
+  // --- NUEVO: Estilo de gradiente traído del Hero ---
+  const gradientTextStyle = {
+    background: 'linear-gradient(to right, #F89880, #B5A8C8, #88C0D0, #8FBC8F)',
+    WebkitBackgroundClip: 'text',
+    backgroundClip: 'text',
+    color: 'transparent',
+    display: 'inline-block',
+    paddingBottom: '0.1em' // Un poquito de aire abajo
   };
 
   return (
     <section className="faq-section">
-      
-      {/* --- ESTE ES EL CONTENEDOR INTERNO PARA CENTRAR CONTENIDO --- */}
       <div className="faq-content-wrapper">
         
         <div className="faq-header">
-          <h2>Preguntas Frecuentes</h2>
+          {/* --- APLICAMOS EL GRADIENTE AL TÍTULO --- */}
+          <h2 style={gradientTextStyle}>Preguntas Frecuentes</h2>
           <p>Resolvemos tus dudas sobre nuestros servicios</p>
         </div>
 
@@ -71,7 +77,7 @@ const FAQSection = () => {
           ))}
         </div>
         
-      </div> {/* --- CIERRE DEL faq-content-wrapper --- */}
+      </div>
     </section>
   );
 };
