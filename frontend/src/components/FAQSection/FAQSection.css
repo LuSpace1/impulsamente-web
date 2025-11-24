@@ -1,0 +1,140 @@
+/* --- Colores de nuestra paleta --- */
+:root {
+  --color-coral-intenso: #F89880; /* El color de tus botones */
+  --color-coral-suave: #fff5f0;   /* Un tinte muy claro para fondos */
+  --color-texto-oscuro: #333;
+  --color-texto-suave: #555;
+}
+
+.faq-section {
+  width: 100%; 
+  padding: 80px 0; /* Un poco más de aire vertical */
+  font-family: Arial, sans-serif;
+  /* Fondo intenso que elegiste */
+  background: linear-gradient(to right, #ffe4d1 0%, #ffffff 50%, #d4f1f9 100%);
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+}
+
+.faq-content-wrapper {
+  max-width: 900px; 
+  width: 100%; 
+  padding: 0 20px; 
+  box-sizing: border-box; 
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 50px; /* Más espacio antes del acordeón */
+}
+
+.faq-header h2 {
+  font-size: 3rem; /* Título más grande e impactante */
+  font-weight: 800;
+  margin-bottom: 15px;
+  /* El color lo maneja el estilo en línea del JSX */
+}
+
+.faq-header p {
+  font-size: 1.2rem;
+  color: var(--color-texto-suave);
+  max-width: 600px;
+  margin: 0 auto; /* Centrar el párrafo si es corto */
+}
+
+/* --- Estilos del Acordeón (Creativo) --- */
+
+.accordion {
+  /* Más redondeado, como el Hero */
+  border-radius: 24px; 
+  overflow: hidden;
+  /* Sombra más suave, difusa y grande para efecto "flotante" */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Borde sutil brillante */
+}
+
+.accordion-item {
+  background-color: #ffffff;
+  /* Borde separador más sutil */
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px; /* Un poco más de espacio interno */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #ffffff;
+}
+
+/* Hover: Un tinte coral muy, muy sutil al pasar el mouse */
+.accordion-header:hover {
+  background-color: #fffaf8;
+}
+
+.accordion-header span {
+  font-size: 1.1rem; /* Pregunta un poco más grande */
+  font-weight: 600;
+  color: var(--color-texto-oscuro);
+  transition: color 0.3s ease;
+}
+
+/* Flecha más moderna */
+.accordion-icon {
+  width: 12px;
+  height: 12px;
+  /* Bordes un poco más gruesos y redondeados */
+  border-right: 3px solid #ccc; 
+  border-bottom: 3px solid #ccc;
+  transform: rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1); /* Transición más fluida */
+  border-radius: 2px;
+}
+
+/* --- Cuerpo --- */
+.accordion-body {
+  display: none; 
+  padding: 0;
+  margin: 0;
+}
+
+.accordion-body p {
+  font-size: 1rem;
+  line-height: 1.7; /* Mejor lectura */
+  color: var(--color-texto-suave);
+}
+
+/* --- ESTADOS ABIERTOS (Aquí está la magia) --- */
+
+/* Cuando se abre, el fondo del header se vuelve un coral muy suave */
+.accordion-item.open .accordion-header {
+  background-color: var(--color-coral-suave);
+}
+
+/* El texto de la pregunta se vuelve Coral intenso */
+.accordion-item.open .accordion-header span {
+  color: var(--color-coral-intenso);
+}
+
+/* La flecha gira y se vuelve Coral intenso */
+.accordion-item.open .accordion-icon {
+  transform: rotate(-135deg);
+  border-color: var(--color-coral-intenso);
+}
+
+.accordion-item.open .accordion-body {
+  display: block; 
+  /* Padding que coincide con el header */
+  padding: 0 30px 30px 30px;
+  /* Mantenemos el fondo suave en el cuerpo también para continuidad */
+  background-color: var(--color-coral-suave);
+}
