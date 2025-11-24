@@ -4,7 +4,7 @@ import "./VideoSection.css";
 const VideoSection = () => {
   // IMPORTANTE: Cuando suban su video, cambien ESTA ID por la suya.
   // La ID es la parte final del link de youtube (ej: dQw4w9WgXcQ)
-  const youtubeVideoId = "KxxGdaxJpi0"; // ID de ejemplo (Rick Roll para probar)
+  const youtubeVideoId = "H7SYuqnczuY"; // ID de ejemplo (Rick Roll para probar)
 
   return (
     <section className="video-section-container">
