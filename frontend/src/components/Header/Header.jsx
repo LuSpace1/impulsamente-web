@@ -72,7 +72,7 @@ function Header() {
               FAQ
             </Nav.Link>
 
-            <Nav.Link onClick={() => handleNavegacion("seccion-contactanos")}>
+            <Nav.Link onClick={() => handleNavegacion("footer-section")}>
               Contáctanos
             </Nav.Link>
 
