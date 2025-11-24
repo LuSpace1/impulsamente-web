@@ -1,0 +1,56 @@
+/* FloatingWhatsApp.css */
+
+/* Contenedor del botón flotante */
+.whatsapp-float {
+    position: fixed;
+    width: 65px; /* Un pelín más grande para que luzca el degradado */
+    height: 65px;
+    bottom: 40px;
+    right: 40px;
+
+    /* --- EL CAMBIO CLAVE: DEGRADADO ARCOÍRIS --- */
+    /* Usamos tus colores corporativos en diagonal */
+    background: linear-gradient(135deg, #F89880, #B5A8C8, #88C0D0, #8FBC8F);
+    
+    color: #FFF; /* Icono blanco para contraste */
+    border-radius: 50%; /* Asegura que sea perfectamente redondo */
+    
+    /* Sombra suave inicial */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto "rebote" suave */
+    
+    /* Flex para centrar el icono */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+/* Efecto Hover */
+.whatsapp-float:hover {
+    /* Hacemos que crezca y rote un poquito para llamar la atención */
+    transform: scale(1.15) rotate(15deg);
+    
+    /* Cambiamos la sombra negra por una sombra de color "brillante" (el azul del medio) */
+    box-shadow: 0 8px 20px rgba(136, 192, 208, 0.6);
+    
+    color: #FFF; /* Mantenemos el icono blanco */
+}
+
+/* Animación de entrada suave */
+@keyframes floatIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.whatsapp-float {
+    animation: floatIn 0.6s ease-out forwards;
+}
