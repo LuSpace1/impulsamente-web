@@ -1,28 +1,49 @@
-import './App.css'
-import { Route,Routes } from 'react-router-dom'
-// Importaciones de los holder de pages
-import AgendarIntegral from './pages/AgendarIntegral' 
-import AgendarMetodologo from './pages/AgendarMetodologo'
-import AgendarPsicologo from './pages/AgendarPsicologo'
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+
+// Componentes y pages
+import AgendarIntegral from "./pages/AgendarIntegral/AgendarIntegral";
+import AgendarMetodologo from "./pages/AgendarMetodologo/AgendarMetodologo";
+import AgendarPsicologo from "./pages/AgendarPsicologo/AgendarPsicologo";
 import Home from "./pages/Home";
-import TestApi from './components/TestApi'
-import Header from './components/Header/Header'
+import Footer from "./components/Footer/Footer.jsx";
+import Header from "./components/Header/Header";
+import ChangePassword from "./pages/admin/ChangePassword";
+// Admin Impulsamente
+import EditProfessional from "./pages/admin/EditProfessional";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import CreateProfessional from "./pages/admin/CreateProfessional";
 
 function App() {
-
   return (
     <>
-      <Header/>
-      <Routes> {/* observa y compara la url actual con las almacenadas*/}
-        <Route path="/" element={<Home/>} /> {/* indica que debe renderizar [element] si coinciden */}
-        <Route path="/AgendarIntegral" element={<AgendarIntegral />} />
-        <Route path="/AgendarMetodologo" element={<AgendarMetodologo />} />
-        <Route path="/AgendarPsicologo" element={<AgendarPsicologo />} />
-        <Route path="/TestApi" element={<TestApi/>}/>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/cotizar-psicologico" element={<AgendarPsicologo />} />
+        <Route path="/cotizar-metodologia" element={<AgendarMetodologo />} />
+        <Route path="/cotizar-integral" element={<AgendarIntegral />} />
+        <Route path="/admin-panel/dashboard" element={<AdminDashboard />} />
+        <Route
+          path="/admin-panel/profesionales/nuevo"
+          element={<CreateProfessional />}
+        />
+
+        <Route
+          path="/admin-panel/profesionales/:id/editar"
+          element={<EditProfessional />}
+        />
+
+        <Route
+          path="/admin-panel/cambiar-password"
+          element={<ChangePassword />}
+        />
+        <Route path="/admin-login" element={<AdminLogin />} />
       </Routes>
-      {/* Footer podria ir aqui */}
+      <Footer/>
     </>
   );
 }
 
-export default App
+export default App;

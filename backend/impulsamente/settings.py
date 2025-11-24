@@ -38,13 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders', # Habilita CORS para permitir peticiones desde el frontend (React)
-    'services', 
+    # Habilita CORS para permitir peticiones desde el frontend (React)
+    'corsheaders',
     'rest_framework',
+    'services',
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware', # Procesa las cabeceras CORS antes del manejo general de Django
+    # Procesa las cabeceras CORS antes del manejo general de Django
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -55,14 +57,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'impulsamente.urls'
-
-# CORS Configuration
-# Define los orígenes (dominios) autorizados para hacer peticiones a la API de Django.
-# En desarrollo, React suele correr en localhost o 127.0.0.1, por eso se incluyen ambos.
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",   # Frontend React vite (modo desarrollo)
-    "http://127.0.0.1:5173",   # Alternativa local (algunos navegadores usan esta IP)
-]
 
 TEMPLATES = [
     {
@@ -139,4 +133,28 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 
 # Ruta en el disco duro donde se guardarán los archivos subidos
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# --- CORS Configuration (CRÍTICO PARA REACT) ---
+# Define los orígenes (dominios) autorizados para hacer peticiones a la API de Django.
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",   # Frontend React vite (modo desarrollo)
+    "http://127.0.0.1:5173",   # Alternativa local
+]
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
+CORS_ALLOW_CREDENTIALS = True
+
+# Métodos permitidos
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]

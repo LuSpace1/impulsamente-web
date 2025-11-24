@@ -1,20 +1,15 @@
 from rest_framework import serializers
-from .models import Professional
+from .models import Professional, ContactSubmission
 
-class ProfessionalSerializer(serializers.ModelSerializer): #ModelSerializer es una clase base de DRF.
+
+class ProfessionalSerializer(serializers.ModelSerializer):
     """
-    Serializer para el modelo Professional.
-    Serializer se encarga de convertir el modelo a JSON y viceversa.
+    Serializer de LECTURA (Para mostrar datos en la web y dashboard)
     """
+    foto = serializers.SerializerMethodField()
+
     class Meta:
-        """
-        Clase que configura el comportamiento del serializer.
-        Define que modelo usa como referencia y que campos incluir.
-        """
-        #Campo personalizado para devoler la URL que necesita react ya que en models.py solo entrega el nombre.
-        foto = serializers.SerializerMethodField()
         model = Professional
-        #Los campos que si se incluiran en el JSON. (Comparar con el modelo en services/models.py)
         fields = [
             'id',
             'nombre_completo',
@@ -25,17 +20,31 @@ class ProfessionalSerializer(serializers.ModelSerializer): #ModelSerializer es u
             'años_experiencia',
             'calendly_username',
             'tipo_servicio',
+            'activo',
+            'orden'
         ]
 
-        def get_foto(self, obj): #Convencion get_nombre_del_campo (Metodo de lectura de campo personalizado que tiene serializer)
-            """
-            Funcion que devolvera la URL completa de la foto de un profesional.
-            Argumentos: self (Instancia de la clase serializer), obj (Instancia del modelo Professional), str (URL completa o none si no tiene foto)
-            """
-            if obj.foto: #Comprueba si existe la foto.
-                request = self.context.get('request') #self (serializer) recibe contexto de la peticion HTTP actual.
-                if request:
-                    return request.build_absolute_uri(obj.foto.url) # request.build_absolute_uri() es un metodo/funcion del ojeto HttpRequest que devuelve la URL absoluta.
-                #Ruta alternativa si no hay request en el contexto.
-                return obj.foto.url
-            return None
+    def get_foto(self, obj):
+        if obj.foto:
+            request = self.context.get('request')
+            if request:
+                return request.build_absolute_uri(obj.foto.url)
+            return obj.foto.url
+        return None
+
+
+class ProfessionalCRUDSerializer(serializers.ModelSerializer):
+    """
+    Serializer de ESCRITURA (Para Crear y Editar)
+    """
+    foto = serializers.ImageField(required=False)
+
+    class Meta:
+        model = Professional
+        fields = '__all__'
+
+class ContactMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactSubmission
+        fields = ('id', 'nombre', 'email', 'servicio_interes', 'mensaje', 'fecha_creacion', 'leido')
+        read_only_fields = ('id', 'fecha_creacion', 'leido')

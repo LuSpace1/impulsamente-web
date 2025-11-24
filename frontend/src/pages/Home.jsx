@@ -3,6 +3,7 @@ import Hero from "../components/Hero/Hero";
 import { Element } from 'react-scroll';
 import ServicesSection from "../components/ServicesSection/ServicesSection";
 import FAQSection from '../components/FAQSection/FAQSection';
+import AboutSection from "../components/AboutSection/AboutSection.jsx"; |||
 
 function Home() {
   return (
@@ -27,6 +28,9 @@ function Home() {
         </div>
       </Element>
       
+        <AboutSection />
+      </Element>
+
       <Element name="seccion-FAQ">
         {/* aqui va el componente de preguntas frecuentes*/}
         <FAQSection />
