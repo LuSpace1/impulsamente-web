@@ -1,0 +1,55 @@
+/* VideoSection.css */
+
+/* 1. CONTENEDOR PRINCIPAL (LIMPIO, SIN BORDES) */
+.video-section-container {
+    /* Degradado suave */
+    background: linear-gradient(135deg, #ffe4d6 0%, #dcf5ff 100%);
+    
+    padding: 80px 20px;
+    text-align: center;
+
+    /* Eliminamos los bordes de color */
+    border: none; 
+}
+
+/* 2. TÍTULO ESTILO ARCOÍRIS */
+.video-title {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 50px;
+    background-image: linear-gradient(to right, #F89880, #B5A8C8, #88C0D0, #8FBC8F);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    display: inline-block;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+}
+
+/* 3. CONTENEDOR DEL VIDEO */
+.video-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    
+    /* Mantenemos la sombra y el marco blanco del video porque se ven bien */
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25);
+    border: 5px solid #ffffff; 
+}
+
+/* --- Aspect Ratio --- */
+.video-aspect-ratio {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.video-aspect-ratio iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
