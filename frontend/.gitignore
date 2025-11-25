@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# ignorar archivos cypress
+cypress/videos
+cypress/screenshots
+cypress.env.json
