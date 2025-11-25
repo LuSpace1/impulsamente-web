@@ -1,6 +1,7 @@
 # backend/services/admin.py
 from django.contrib import admin
-from .models import Professional, ContactSubmission # Importa tu modelo
+from django.contrib.auth.admin import UserAdmin
+from .models import Professional, ContactSubmission,CustomUser # Importa tu modelo
 
 # Usa el decorador para registrar y configurar el modelo en el admin
 @admin.register(Professional)
@@ -46,3 +47,14 @@ class ContactSubmissionAdmin(admin.ModelAdmin):
     # Desactivar el botón "Agregar" (Los mensajes solo llegan desde el formulario web)
     def has_add_permission(self, request):
         return False
+    
+@admin.register(CustomUser)
+class CustomUserAdmin(UserAdmin):
+    # Agregamos 'password_must_change' al formulario de edición
+    fieldsets = UserAdmin.fieldsets + (
+        ('Seguridad Extra', {'fields': ('password_must_change',)}),
+    )
+    # Agregarlo también al formulario de creación
+    add_fieldsets = UserAdmin.add_fieldsets + (
+        ('Seguridad Extra', {'fields': ('password_must_change',)}),
+    )
