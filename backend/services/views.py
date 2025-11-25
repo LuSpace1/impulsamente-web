@@ -6,10 +6,9 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.authentication import SessionAuthentication
 from rest_framework import status
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-from .models import Professional, UserProfile, ContactSubmission
+from .models import Professional, CustomUser, ContactSubmission
 from .serializers import ProfessionalSerializer, ProfessionalCRUDSerializer, ContactMessageSerializer
 
 
@@ -45,7 +44,7 @@ class ContactCreateView(CreateAPIView):
     """
     queryset = ContactSubmission.objects.all()
     serializer_class = ContactMessageSerializer
-    permission_classes = [AllowAny] # Importante para que cualquiera pueda escribir
+    permission_classes = [AllowAny] 
 
 
 class AdminProfessionalViewSet(ModelViewSet):
@@ -67,23 +66,20 @@ class LoginView(APIView):
     def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
+
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
 
-            must_change = False
-            try:
-                profile = UserProfile.objects.get(user=user)
-                must_change = profile.password_must_change
-            except UserProfile.DoesNotExist:
-                pass
+            must_change = user.password_must_change
 
             return Response({
                 'success': True,
                 'username': user.username,
                 'must_change_password': must_change
             })
+
         return Response({'error': 'Credenciales inválidas'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
@@ -98,13 +94,12 @@ class LogoutView(APIView):
 class CheckAuthView(APIView):
     def get(self, request):
         if request.user.is_authenticated:
-            must_change = False
-            try:
-                profile = UserProfile.objects.get(user=request.user)
-                must_change = profile.password_must_change
-            except UserProfile.DoesNotExist:
-                pass
-            return Response({'authenticated': True, 'username': request.user.username, 'must_change_password': must_change})
+            must_change = request.user.password_must_change
+            return Response({
+                'authenticated': True,
+                'username': request.user.username,
+                'must_change_password': must_change
+            })
         return Response({'authenticated': False})
 
 
@@ -124,17 +119,14 @@ class ChangePasswordView(APIView):
             return Response({'error': 'La contraseña debe tener mínimo 8 caracteres'}, status=status.HTTP_400_BAD_REQUEST)
 
         user.set_password(new_password)
-        user.save()
 
-        profile, created = UserProfile.objects.get_or_create(user=user)
-        profile.password_must_change = False
-        profile.save()
+        user.password_must_change = False
+        user.save()
 
         login(request, user)
         return Response({'success': True})
 
 
-# --- Vista para LISTAR mensajes en el Admin ---
 class ContactListView(ListAPIView):
     """
     Vista exclusiva para administradores.
