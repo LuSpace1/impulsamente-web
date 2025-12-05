@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView, CreateAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView, DestroyAPIView
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
@@ -11,6 +11,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from .models import Professional, UserProfile, ContactSubmission
 from .serializers import ProfessionalSerializer, ProfessionalCRUDSerializer, ContactMessageSerializer
+from django.core.mail import send_mail  
+from django.conf import settings        
+from django.shortcuts import get_object_or_404
 
 
 class CsrfExemptSessionAuthentication(SessionAuthentication):
@@ -143,4 +146,37 @@ class ContactListView(ListAPIView):
     """
     queryset = ContactSubmission.objects.all().order_by('-fecha_creacion')
     serializer_class = ContactMessageSerializer
-    permission_classes = [IsAuthenticated] 
+    permission_classes = [IsAuthenticated]
+
+class ContactDeleteView(DestroyAPIView):
+    queryset = ContactSubmission.objects.all()
+    permission_classes = [IsAuthenticated]
+    authentication_classes = (CsrfExemptSessionAuthentication,)
+
+# --- PROTOTIPO DE RESPUESTA (SIMULACIÓN) ---
+class ContactReplyView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = (CsrfExemptSessionAuthentication,)
+
+    def post(self, request, pk):
+        contact_submission = get_object_or_404(ContactSubmission, pk=pk)
+        
+        subject = request.data.get('subject')
+        message_body = request.data.get('message')
+
+        if not subject or not message_body:
+            return Response({'error': 'Asunto y mensaje son obligatorios'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # --- SIMULACIÓN DEL ENVÍO ---
+        print("========================================")
+        print(f"🚀 [PROTOTIPO] Enviando respuesta a: {contact_submission.email}")
+        print(f"📧 Asunto: {subject}")
+        print(f"📝 Mensaje: {message_body}")
+        print("========================================")
+        
+        # Marcamos como 'leído' para indicar que ya se gestionó
+        contact_submission.leido = True
+        contact_submission.save()
+
+        # Simulamos un pequeño retraso o éxito inmediato
+        return Response({'success': True, 'message': 'Respuesta registrada en el sistema (Simulación)'})
