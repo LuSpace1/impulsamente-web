@@ -46,5 +46,5 @@ class ProfessionalCRUDSerializer(serializers.ModelSerializer):
 class ContactMessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactSubmission
-        fields = ('id', 'nombre', 'email', 'servicio_interes', 'mensaje', 'fecha_creacion', 'leido')
-        read_only_fields = ('id', 'fecha_creacion', 'leido')
+        fields = ['id', 'nombre', 'email', 'servicio_interes', 'mensaje', 'fecha_creacion', 'leido']
+        read_only_fields = ['fecha_creacion', 'leido']
