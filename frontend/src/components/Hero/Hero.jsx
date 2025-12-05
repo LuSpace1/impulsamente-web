@@ -8,7 +8,6 @@ const Hero = () => {
 
   // ... (Tus estilos de texto gradient y heroStyle se mantienen igual) ...
   const gradientText = {
-    /* ... tu código ... */
     background: "linear-gradient(to right, #F89880, #B5A8C8, #88C0D0, #8FBC8F)",
     WebkitBackgroundClip: "text",
     backgroundClip: "text",
@@ -17,11 +16,10 @@ const Hero = () => {
   };
 
   const heroStyle = {
-    backgroundImage:
-      "linear-gradient(to right, #FFF0E5 0%, #FFFFFF 50%, #E0F7FA 100%)",
-    paddingTop: "8rem",
-    paddingBottom: "5rem",
-    overflow: "hidden",
+    backgroundColor: 'transparent', 
+    paddingTop: '5rem',
+    paddingBottom: '5rem',
+    overflow: 'hidden',
   };
 
   const buttonStyle = {
