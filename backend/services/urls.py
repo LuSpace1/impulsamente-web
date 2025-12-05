@@ -8,20 +8,23 @@ from .views import (
     LogoutView,
     CheckAuthView,
     ChangePasswordView,
+    # --- Vistas de Contacto ---
     ContactCreateView, 
-    ContactListView    
+    ContactListView,
+    ContactDeleteView,
+    ContactReplyView
 )
 
 router = DefaultRouter()
 router.register(r'admin/professionals', AdminProfessionalViewSet, basename='admin-professionals')
 
 urlpatterns = [
-    # --- Rutas Públicas ---
+    # --- Rutas Públicas (Lo que ve el usuario) ---
     path('professionals/psychology/', PsychologyProfesionalsView.as_view(), name='psychology-professionals'),
     path('professionals/methodology/', MethodologyProfessionalsView.as_view(), name='methodology-professionals'),
     
-    # --- Ruta para ENVIAR mensajes (Pública) ---
-    path('contact/', ContactCreateView.as_view(), name='crear-contacto'),
+    # 1. RUTA PARA EL FORMULARIO (POST) - ¡Esta es la que te falta!
+    path('contact/', ContactCreateView.as_view(), name='create-contact'),
 
     # --- Rutas de Autenticación ---
     path('auth/login/', LoginView.as_view(), name='auth_login'),
@@ -29,9 +32,14 @@ urlpatterns = [
     path('auth/check/', CheckAuthView.as_view(), name='auth_check'),
     path('auth/change-password/', ChangePasswordView.as_view(), name='auth_change_password'),
     
-    # --- Ruta para LEER mensajes (Admin) ---
+    # --- Rutas de Mensajería (Admin) ---
+    # 2. RUTA PARA VER LA BANDEJA (GET)
     path('contact/list/', ContactListView.as_view(), name='contact-list'),
+    
+    # 3. RUTAS PARA GESTIONAR (DELETE / POST)
+    path('contact/<int:pk>/delete/', ContactDeleteView.as_view(), name='delete-contact'),
+    path('contact/<int:pk>/reply/', ContactReplyView.as_view(), name='reply-contact'),
 
-    # --- Rutas del Admin (CRUD) ---
+    # --- Router del CRUD de Profesionales (Siempre al final) ---
     path('', include(router.urls)),
 ]
