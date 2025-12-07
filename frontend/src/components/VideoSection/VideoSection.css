@@ -1,18 +1,19 @@
-/* VideoSection.css */
+/* frontend/src/components/VideoSection/VideoSection.css */
 
-/* 1. CONTENEDOR PRINCIPAL (LIMPIO, SIN BORDES) */
+/* 1. CONTENEDOR PRINCIPAL (TRANSPARENTE) */
 .video-section-container {
-    /* Degradado suave */
-    background: linear-gradient(135deg, #ffe4d6 0%, #dcf5ff 100%);
+    width: 100%;
+    
+    /* --- CAMBIO CLAVE: Transparencia --- */
+    background: transparent;
+    /* (Antes tenías linear-gradient #ffe4d6, lo hemos quitado) */
     
     padding: 80px 20px;
     text-align: center;
-
-    /* Eliminamos los bordes de color */
     border: none; 
 }
 
-/* 2. TÍTULO ESTILO ARCOÍRIS */
+/* 2. TÍTULO ESTILO ARCOÍRIS (Se mantiene igual, se ve genial) */
 .video-title {
     font-size: 3rem;
     font-weight: 900;
@@ -25,16 +26,16 @@
     filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
 }
 
-/* 3. CONTENEDOR DEL VIDEO */
+/* 3. CONTENEDOR DEL VIDEO (Mantenemos marco blanco) */
 .video-wrapper {
     max-width: 900px;
     margin: 0 auto;
     border-radius: 20px;
     overflow: hidden;
     
-    /* Mantenemos la sombra y el marco blanco del video porque se ven bien */
     box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25);
     border: 5px solid #ffffff; 
+    background-color: #000; /* Fondo negro por si el video tarda en cargar */
 }
 
 /* --- Aspect Ratio --- */

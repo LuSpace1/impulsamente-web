@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+  /* --- FONDO UNIFICADO MAESTRO --- */
+  background: linear-gradient(to right, #ffe4d1 0%, #ffffff 50%, #d4f1f9 100%);
+  
+  /* ESTA ES LA CLAVE: El fondo se queda fijo al hacer scroll */
+  background-attachment: fixed; 
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
