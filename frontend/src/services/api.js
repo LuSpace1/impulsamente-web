@@ -3,10 +3,10 @@ import axios from "axios";
 // Instancia principal con credenciales (Cookies)
 const apiService = axios.create({
   baseURL: import.meta.env.VITE_API_URL || "http://localhost:8000",
-  timeout: 5000,
-  withCredentials: true, // Esto envía las cookies
-
-  // Le dice a Axios: "Busca la cookie llamada 'csrftoken' y envíala en el header 'X-CSRFToken'"
+  timeout: 60000, 
+  withCredentials: true, 
+  
+  // Configuración estándar para intentar leer cookies automáticas
   xsrfCookieName: "csrftoken",
   xsrfHeaderName: "X-CSRFToken",
 });
@@ -23,8 +23,19 @@ export const getPsicologos = () => {
 };
 
 // --- Autenticación y Admin ---
-export const loginAdmin = (credentials) =>
-  apiService.post("/api/auth/login/", credentials);
+
+export const loginAdmin = async (credentials) => {
+  const response = await apiService.post("/api/auth/login/", credentials);
+
+  if (response.data && response.data.csrf_token) {
+    apiService.defaults.headers.common["X-CSRFToken"] =
+      response.data.csrf_token;
+    console.log("Token de seguridad configurado correctamente.");
+  }
+
+  return response;
+};
+
 export const checkAuth = () => apiService.get("/api/auth/check/");
 export const logoutAdmin = () => apiService.post("/api/auth/logout/");
 export const changePassword = (data) =>
@@ -33,22 +44,29 @@ export const changePassword = (data) =>
 // --- CRUD Profesionales ---
 export const getAdminProfessionals = () =>
   apiService.get("/api/admin/professionals/");
+
 export const createProfessional = (formData) =>
   apiService.post("/api/admin/professionals/", formData, {
     headers: { "Content-Type": "multipart/form-data" },
   });
+
 export const updateProfessional = (id, formData) =>
   apiService.patch(`/api/admin/professionals/${id}/`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
   });
+
 export const toggleProfessionalStatus = (id, isActive) =>
   apiService.patch(`/api/admin/professionals/${id}/`, { activo: isActive });
+
 export const deleteProfessional = (id) =>
   apiService.delete(`/api/admin/professionals/${id}/`);
+
 export const getProfessionalById = (id) =>
   apiService.get(`/api/admin/professionals/${id}/`);
 
 // --- GESTIÓN DE MENSAJES (BANDEJA DE ENTRADA) ---
-export const getContactMessages = () => apiService.get('/api/contact/list/');
-export const deleteContactMessage = (id) => apiService.delete(`/api/contact/${id}/delete/`);
-export const replyContactMessage = (id, data) => apiService.post(`/api/contact/${id}/reply/`, data);
+export const getContactMessages = () => apiService.get("/api/contact/list/");
+export const deleteContactMessage = (id) =>
+  apiService.delete(`/api/contact/${id}/delete/`);
+export const replyContactMessage = (id, data) =>
+  apiService.post(`/api/contact/${id}/reply/`, data);
