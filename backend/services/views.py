@@ -10,18 +10,21 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from .models import Professional, CustomUser, ContactSubmission
 from .serializers import ProfessionalSerializer, ProfessionalCRUDSerializer, ContactMessageSerializer
-from django.core.mail import send_mail  
-from django.conf import settings        
+from django.core.mail import send_mail
+from django.conf import settings
 from django.shortcuts import get_object_or_404
+from django.middleware.csrf import get_token
 
 
 class CsrfExemptSessionAuthentication(SessionAuthentication):
     """
     Clase personalizada que desactiva la validación CSRF de DRF
     pero mantiene la sesión del usuario activa.
+    Útil para evitar problemas de Cross-Domain entre Vercel y Render.
     """
+
     def enforce_csrf(self, request):
-        return 
+        return
 
 
 class PsychologyProfesionalsView(ListAPIView):
@@ -47,7 +50,7 @@ class ContactCreateView(CreateAPIView):
     """
     queryset = ContactSubmission.objects.all()
     serializer_class = ContactMessageSerializer
-    permission_classes = [AllowAny] 
+    permission_classes = [AllowAny]
 
 
 class AdminProfessionalViewSet(ModelViewSet):
@@ -77,10 +80,13 @@ class LoginView(APIView):
 
             must_change = user.password_must_change
 
+            csrf_token = get_token(request)
+
             return Response({
                 'success': True,
                 'username': user.username,
-                'must_change_password': must_change
+                'must_change_password': must_change,
+                'csrf_token': csrf_token
             })
 
         return Response({'error': 'Credenciales inválidas'}, status=status.HTTP_401_UNAUTHORIZED)
@@ -95,9 +101,11 @@ class LogoutView(APIView):
 
 
 class CheckAuthView(APIView):
+    authentication_classes = (CsrfExemptSessionAuthentication,)
+
     def get(self, request):
         if request.user.is_authenticated:
-            must_change = request.user.password_must_change
+            must_change = getattr(request.user, 'password_must_change', False)
             return Response({
                 'authenticated': True,
                 'username': request.user.username,
@@ -123,10 +131,13 @@ class ChangePasswordView(APIView):
 
         user.set_password(new_password)
 
-        user.password_must_change = False
+        if hasattr(user, 'password_must_change'):
+            user.password_must_change = False
+
         user.save()
 
         login(request, user)
+
         return Response({'success': True})
 
 
@@ -139,36 +150,37 @@ class ContactListView(ListAPIView):
     queryset = ContactSubmission.objects.all().order_by('-fecha_creacion')
     serializer_class = ContactMessageSerializer
     permission_classes = [IsAuthenticated]
+    authentication_classes = (CsrfExemptSessionAuthentication,)
+
 
 class ContactDeleteView(DestroyAPIView):
     queryset = ContactSubmission.objects.all()
     permission_classes = [IsAuthenticated]
     authentication_classes = (CsrfExemptSessionAuthentication,)
 
-# --- PROTOTIPO DE RESPUESTA (SIMULACIÓN) ---
+
+
 class ContactReplyView(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = (CsrfExemptSessionAuthentication,)
 
     def post(self, request, pk):
         contact_submission = get_object_or_404(ContactSubmission, pk=pk)
-        
+
         subject = request.data.get('subject')
         message_body = request.data.get('message')
 
         if not subject or not message_body:
             return Response({'error': 'Asunto y mensaje son obligatorios'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # --- SIMULACIÓN DEL ENVÍO ---
         print("========================================")
-        print(f"🚀 [PROTOTIPO] Enviando respuesta a: {contact_submission.email}")
+        print(
+            f"🚀 [PROTOTIPO] Enviando respuesta a: {contact_submission.email}")
         print(f"📧 Asunto: {subject}")
         print(f"📝 Mensaje: {message_body}")
         print("========================================")
-        
-        # Marcamos como 'leído' para indicar que ya se gestionó
+
         contact_submission.leido = True
         contact_submission.save()
 
-        # Simulamos un pequeño retraso o éxito inmediato
         return Response({'success': True, 'message': 'Respuesta registrada en el sistema (Simulación)'})
