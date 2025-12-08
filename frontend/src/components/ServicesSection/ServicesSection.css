@@ -2,8 +2,9 @@
 
 .services-section {
     width: 100%;
-    padding: 6rem 0;
-    
+    /* Reducido para acercar la sección de planes al Hero */
+    padding: 3rem 0;
+
     /* --- CAMBIO CLAVE: Transparencia --- */
     background: transparent;
 }
@@ -22,8 +23,7 @@
             #F89880,
             #B5A8C8,
             #88C0D0,
-            #8FBC8F
-        );
+            #8FBC8F);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
