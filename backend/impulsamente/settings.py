@@ -163,6 +163,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:5173",
     "https://*.vercel.app",  # para todo Vercel
 ]
+
 # Métodos permitidos
 CORS_ALLOW_METHODS = [
     "DELETE",
@@ -172,5 +173,17 @@ CORS_ALLOW_METHODS = [
     "POST",
     "PUT",
 ]
+
+# CONFIGURACIÓN DE COOKIES (CRUCIAL PARA VERCEL -> RENDER)
+# Esto permite que las cookies viajen entre dominios diferentes
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
+
+# Esto es obligatorio si usas SAMESITE = 'None'
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+# Asegúrate de que JS pueda leer la cookie CSRF (Por defecto es False, pero verifica)
+CSRF_COOKIE_HTTPONLY = False
 
 AUTH_USER_MODEL = 'services.CustomUser'

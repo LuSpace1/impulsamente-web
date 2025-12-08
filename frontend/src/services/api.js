@@ -2,10 +2,13 @@ import axios from "axios";
 
 // Instancia principal con credenciales (Cookies)
 const apiService = axios.create({
-  // Si existe la variable de entorno (Vercel), Si no existe (tu PC), usa localhost.
   baseURL: import.meta.env.VITE_API_URL || "http://localhost:8000",
   timeout: 5000,
-  withCredentials: true,
+  withCredentials: true, // Esto envía las cookies
+
+  // Le dice a Axios: "Busca la cookie llamada 'csrftoken' y envíala en el header 'X-CSRFToken'"
+  xsrfCookieName: "csrftoken",
+  xsrfHeaderName: "X-CSRFToken",
 });
 
 export default apiService;
