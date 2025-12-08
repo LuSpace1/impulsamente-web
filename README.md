@@ -3,7 +3,7 @@
 > Landing page profesional para servicios de acompañamiento psicológico y asesoría metodológica
 
 [![Estado](https://img.shields.io/badge/Estado-En%20Desarrollo-yellow)](https://github.com)
-[![Versión](https://img.shields.io/badge/Versión-0.1.0-blue)](https://github.com)
+[![Versión](https://img.shields.io/badge/Versión-0.2.0-blue)](https://github.com)
 
 ---
 
