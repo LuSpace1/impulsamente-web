@@ -1,12 +1,12 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Statistics from "../Statistics/Statistics.jsx";
-import "./Hero.css"; // Importamos el CSS nuevo
+import { Link } from 'react-scroll';
+import "./Hero.css"; 
 
 const Hero = () => {
   const colorBoton = "#F89880";
 
-  // ... (Tus estilos de texto gradient y heroStyle se mantienen igual) ...
   const gradientText = {
     background: "linear-gradient(to right, #F89880, #B5A8C8, #88C0D0, #8FBC8F)",
     WebkitBackgroundClip: "text",
@@ -32,20 +32,15 @@ const Hero = () => {
   return (
     <Container fluid style={heroStyle}>
       <Container>
-        {/* IMPORTANTE: 
-           g-0: Elimina espacios entre columnas (gutters)
-           align-items-stretch: Hace que ambas columnas midan lo mismo
-        */}
         <Row className="bg-white rounded-4 shadow-lg align-items-stretch g-0">
+          
           {/* === Columna Izquierda (Texto) === */}
           <Col
             md={6}
             className="p-4 p-md-5 text-center text-md-start d-flex flex-column justify-content-center"
           >
-            {/* ... Tu contenido de texto ... */}
             <div>
               <div className="d-flex justify-content-center mb-3">
-                {/* ... badge ... */}
                 <span
                   style={{
                     ...gradientText,
@@ -70,14 +65,33 @@ const Hero = () => {
                 <strong> acompañamiento psicológico</strong> personalizado.
               </p>
 
+              {/* === BOTONES FUNCIONALES === */}
               <div className="d-grid gap-3 d-md-flex justify-content-md-start mb-4">
-                <Button size="lg" className="me-md-2" style={buttonStyle}>
-                  Ver Planes
-                </Button>
-                <Button size="lg" style={buttonStyle}>
-                  Contactar
-                </Button>
+                
+                {/* 2. Botón Ver Planes -> lleva a 'seccion-servicios' */}
+                <Link 
+                  to="seccion-servicios" 
+                  smooth={true} 
+                  duration={500} 
+                  offset={-50}
+                >
+                  <Button size="lg" className="me-md-2" style={buttonStyle}>
+                    Ver Planes
+                  </Button>
+                </Link>
+
+                <Link 
+                  to="seccion-contacto" 
+                  smooth={true} 
+                  duration={800} 
+                >
+                  <Button size="lg" style={buttonStyle}>
+                    Contactar
+                  </Button>
+                </Link>
+
               </div>
+
             </div>
             <Statistics />
           </Col>
