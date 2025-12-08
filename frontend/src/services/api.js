@@ -2,9 +2,10 @@ import axios from "axios";
 
 // Instancia principal con credenciales (Cookies)
 const apiService = axios.create({
-  baseURL: "http://localhost:8000", 
+  // Si existe la variable de entorno (Vercel), Si no existe (tu PC), usa localhost.
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:8000",
   timeout: 5000,
-  withCredentials: true, // <--- CRUCIAL para el panel de admin
+  withCredentials: true,
 });
 
 export default apiService;
