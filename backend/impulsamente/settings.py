@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
     # Habilita CORS para permitir peticiones desde el frontend (React)
     'corsheaders',
     'rest_framework',
@@ -122,21 +124,18 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
+# Configuración Cloudinary 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+}
 
-STATIC_URL = 'static/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# --- Configuración de Archivos Media ---
-# URL base para acceder a los archivos subidos desde el navegador
+# Configuración de Archivos Media  
 MEDIA_URL = '/media/'
-
-# Ruta en el disco duro donde se guardarán los archivos subidos
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
