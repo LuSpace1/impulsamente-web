@@ -1,0 +1,28 @@
+databases:
+  - name: impulsamente-db
+    databaseName: impulsamente
+    user: admin
+    plan: free
+    region: ohio 
+
+services:
+  - type: web
+    name: impulsamente-api
+    env: python
+    region: ohio
+    plan: free
+    buildCommand: "pip install -r requirements.txt && python manage.py migrate"
+    startCommand: "gunicorn impulsamente.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.14.0
+      - key: SECRET_KEY
+        generateValue: true 
+      - key: WEB_CONCURRENCY
+        value: 4
+      - key: ALLOWED_HOSTS
+        value: "*" 
+      - key: DATABASE_URL
+        fromDatabase:
+          name: impulsamente-db
+          property: connectionString
