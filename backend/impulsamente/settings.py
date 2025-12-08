@@ -24,9 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-a+aj_@&o!#o(q@x^rn9iav40z*g*5%o5^!@m39e9)osa!qw3s='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    ".onrender.com", 
+]
 
 
 # Application definition
@@ -139,16 +143,26 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # --- CORS Configuration (CRÍTICO PARA REACT) ---
 # Define los orígenes (dominios) autorizados para hacer peticiones a la API de Django.
 
+CORS_ALLOW_CREDENTIALS = True
+
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",   # Frontend React vite (modo desarrollo)
+    "http://localhost:5173",   # localhost
     "http://127.0.0.1:5173",   # Alternativa local
 ]
+
+# Esto permite automáticamente cualquier subdominio de vercel.app
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.vercel\.app$",
+]
+
+# --- CONFIGURACIÓN CSRF (Seguridad de formularios/Login) ---
+
+# Para que el Login funcione, Django necesita confiar en el origen para recibir POSTs.
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://*.vercel.app",  # para todo Vercel
 ]
-CORS_ALLOW_CREDENTIALS = True
-
 # Métodos permitidos
 CORS_ALLOW_METHODS = [
     "DELETE",
