@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { changePassword } from "../../services/api";
+import './ChangePassword.css';
 
 function ChangePassword() {
   const [form, setForm] = useState({
@@ -48,7 +49,7 @@ function ChangePassword() {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container change-password-wrapper">
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card shadow-sm">
