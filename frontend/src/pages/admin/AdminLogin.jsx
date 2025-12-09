@@ -27,7 +27,7 @@ function AdminLogin() {
     // Contenedor principal con altura mínima y padding superior para compensar el navbar fijo
     <div
       className="container d-flex align-items-center justify-content-center"
-      style={{ minHeight: "100vh", paddingTop: "100px" }}
+      style={{ minHeight: "70vh", paddingTop: "90px" }}
     >
       <div
         className="card shadow-lg border-0"
