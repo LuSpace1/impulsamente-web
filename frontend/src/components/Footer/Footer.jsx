@@ -104,7 +104,6 @@ const Footer = () => {
                     to="/admin-login"
                     title="Acceso Administrativo"
                     onClick={() => scroll.scrollToTop()}
-                    smooth={true}
                   >
                     <FaLock
                       style={{ fontSize: "0.8rem", marginBottom: "2px" }}
