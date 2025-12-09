@@ -36,7 +36,7 @@ function AdminDashboard() {
 
   const handleLogout = async () => {
     await logoutAdmin();
-    navigate("/admin-panel/login");
+    navigate("/");
   };
 
   const handleToggle = async (id, currentStatus) => {

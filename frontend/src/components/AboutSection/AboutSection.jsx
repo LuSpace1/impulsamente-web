@@ -70,8 +70,7 @@ const AboutSection = () => {
                   <div>
                     <h6 className="fw-bold mb-1">Bienestar Integral</h6>
                     <p className="mb-0">
-                      Cuidado de la salud mental y emocional durante todo el proceso de
-                      tesis.
+                      Cuidado de la salud mental y emocional durante todos tus procesos.
                     </p>
                   </div>
                 </div>
