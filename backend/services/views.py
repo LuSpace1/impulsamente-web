@@ -53,6 +53,8 @@ class ContactCreateView(CreateAPIView):
     serializer_class = ContactMessageSerializer
     permission_classes = [AllowAny]
 
+    authentication_classes = []
+
 
 class AdminProfessionalViewSet(ModelViewSet):
     queryset = Professional.objects.all().order_by('orden')
