@@ -33,7 +33,6 @@ const Hero = () => {
     <Container fluid style={heroStyle}>
       <Container>
         <Row className="bg-white rounded-4 shadow-lg align-items-stretch g-0">
-          
           {/* === Columna Izquierda (Texto) === */}
           <Col
             md={6}
@@ -43,14 +42,27 @@ const Hero = () => {
               <div className="d-flex justify-content-center mb-3">
                 <span
                   style={{
-                    ...gradientText,
+                    // --- 1. Estilos de la CAJITA (Contenedor) ---
                     border: "1px solid #eee",
                     padding: "5px 15px",
                     borderRadius: "20px",
                     background: "white",
+                    display: "inline-block", // Importante para que la cajita se ajuste bien
                   }}
                 >
-                  Impulsa Tesis + Divermente
+                  {/* --- 2. Estilos del TEXTO ARCOIRIS --- */}
+                  <span
+                    style={{
+                      background:
+                        "linear-gradient(to right, #F89880, #B5A8C8, #88C0D0, #8FBC8F)",
+                      WebkitBackgroundClip: "text",
+                      backgroundClip: "text",
+                      color: "transparent",
+                      fontWeight: 600,
+                    }}
+                  >
+                    Impulsa Tesis + Divermente
+                  </span>
                 </span>
               </div>
 
@@ -67,12 +79,11 @@ const Hero = () => {
 
               {/* === BOTONES FUNCIONALES === */}
               <div className="d-grid gap-3 d-md-flex justify-content-md-start mb-4">
-                
                 {/* 2. Botón Ver Planes -> lleva a 'seccion-servicios' */}
-                <Link 
-                  to="seccion-servicios" 
-                  smooth={true} 
-                  duration={500} 
+                <Link
+                  to="seccion-servicios"
+                  smooth={true}
+                  duration={500}
                   offset={-50}
                 >
                   <Button size="lg" className="me-md-2" style={buttonStyle}>
@@ -80,18 +91,12 @@ const Hero = () => {
                   </Button>
                 </Link>
 
-                <Link 
-                  to="seccion-contacto" 
-                  smooth={true} 
-                  duration={800} 
-                >
+                <Link to="seccion-contacto" smooth={true} duration={800}>
                   <Button size="lg" style={buttonStyle}>
                     Contactar
                   </Button>
                 </Link>
-
               </div>
-
             </div>
             <Statistics />
           </Col>
