@@ -42,9 +42,12 @@ function CreateProfessional() {
 
   return (
     <div className="container mt-4 mb-5">
-      <div className="d-flex justify-content-between align-items-center mb-4">
+      <div className="d-flex justify-content-between align-items-center mb-4 mt-5 pt-5">
         <h3>Nuevo Profesional</h3>
-        <Link to="/admin-panel/dashboard" className="btn btn-outline-secondary">
+        <Link
+          to="/admin-panel/dashboard"
+          className="btn btn-outline-secondary mt-4"
+        >
           ← Volver al Dashboard
         </Link>
       </div>
