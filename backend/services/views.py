@@ -14,6 +14,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.middleware.csrf import get_token
+from rest_framework.parsers import MultiPartParser, FormParser 
 
 
 class CsrfExemptSessionAuthentication(SessionAuthentication):
@@ -58,11 +59,12 @@ class AdminProfessionalViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
     authentication_classes = (CsrfExemptSessionAuthentication,)
 
+    parser_classes = (MultiPartParser, FormParser)
+
     def get_serializer_class(self):
         if self.action in ['create', 'update', 'partial_update']:
             return ProfessionalCRUDSerializer
         return ProfessionalSerializer
-
 
 @method_decorator(csrf_exempt, name='dispatch')
 class LoginView(APIView):
