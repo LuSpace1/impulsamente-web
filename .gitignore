@@ -117,3 +117,6 @@ htmlcov/
 *.temp
 *.swp
 *.swo
+
+# Configuracion local de entornos unix
+.python-version
