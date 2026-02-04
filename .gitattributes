@@ -1,0 +1,2 @@
+# Forzar a Git a usar finales de línea LF (estilo Unix) en todos los archivos de texto.
+* text=auto eol=lf
