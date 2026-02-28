@@ -139,6 +139,8 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5174",
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
@@ -148,6 +150,8 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5174",
     "https://*.vercel.app",
 ]
 
@@ -155,10 +159,19 @@ CORS_ALLOW_METHODS = [
     "DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT",
 ]
 
-CSRF_COOKIE_SAMESITE = 'None'
-SESSION_COOKIE_SAMESITE = 'None'
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+# En producción (HTTPS) las cookies requieren Secure=True y SameSite=None.
+# En desarrollo (HTTP) Secure debe ser False para que el navegador las acepte.
+if IN_PRODUCTION:
+    CSRF_COOKIE_SAMESITE = 'None'
+    SESSION_COOKIE_SAMESITE = 'None'
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+else:
+    CSRF_COOKIE_SAMESITE = 'Lax'
+    SESSION_COOKIE_SAMESITE = 'Lax'
+    CSRF_COOKIE_SECURE = False
+    SESSION_COOKIE_SECURE = False
+
 CSRF_COOKIE_HTTPONLY = False
 
 AUTH_USER_MODEL = 'services.CustomUser'
