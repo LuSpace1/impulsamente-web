@@ -43,6 +43,11 @@ class ProfessionalCRUDSerializer(serializers.ModelSerializer):
         model = Professional
         fields = '__all__'
 
+    def validate_años_experiencia(self, value):
+        if value is not None and value < 0:
+            raise serializers.ValidationError("Los años de experiencia no pueden ser negativos.")
+        return value
+
 class ContactMessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactSubmission
