@@ -1,122 +1,69 @@
-# ========================
-# Python / Django (Backend)
-# ========================
+#Sistema Operativo
+.DS_Store
+.LSOverride
+.AppleDouble
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.swp
+*.swo
 
-# Entorno virtual
-venv/
-env/
-ENV/
-.venv
+#Entorno
 .env
-
-# Base de datos local
-*.sqlite3
-db.sqlite3
-
-# Archivos de Python compilados
-*.py[cod]
-*$py.class
-__pycache__/
-*.so
-
-# Configuraciones locales
-local_settings.py
-.env
-.env.local
-
-# Archivos de migración (opcional - descomentar si no quieres subirlas)
-# */migrations/*.py
-# !*/migrations/__init__.py
-
-# Media files (archivos subidos por usuarios)
-media/
-
-# Static files recolectados
-staticfiles/
-static_root/
-
-# ========================
-# Node.js / React (Frontend)
-# ========================
-
-# Vite cache
-.vite/
-frontend/.vite/
-
-# Dependencias
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Build de producción
-build/
-dist/
-.next/
-out/
-
-# Variables de entorno
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# Caché
+#Dependencias
+node_modules/
+backend/.venv
+.venv
+venv/
+ENV/
+env/
 .cache/
 .parcel-cache/
+.pytest_cache/
+.vite/
+frontend/.vite/
 
-# ========================
-# IDEs y Editores
-# ========================
-
-# Visual Studio Code
-.vscode/
-*.code-workspace
-
-# PyCharm
-.idea/
-*.iml
-
-# Sublime Text
-*.sublime-project
-*.sublime-workspace
-
-# ========================
-# Sistema Operativo
-# ========================
-
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Linux
-*~
-
-# ========================
-# Otros
-# ========================
-
-# Logs
-*.log
-logs/
-
-# Cobertura de tests
-coverage/
+#Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.python-version
 .coverage
 htmlcov/
-.pytest_cache/
 
-# Archivos temporales
+#Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+#Temporales
 *.tmp
 *.temp
-*.swp
-*.swo
+*~
 
-# Configuracion local de entornos unix
-.python-version
+#Varios
+.idea/
+.vscode/
+*.iml
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+.next/
+out/
+build/
+dist/
+coverage/
+db.sqlite3
+backend/db.sqlite3
+media/
+static_root/
+staticfiles/
+local_settings.py
